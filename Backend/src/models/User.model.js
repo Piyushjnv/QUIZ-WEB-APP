@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import user_scoreModels from "./user_score.models";
 
 const UserSchema = mongoose.Schema({
     username: {
@@ -49,14 +50,23 @@ UserSchema.pre("save", async function (next) {
 );
 
 UserSchema.method.comparePassword( async (password) =>{
+  
       return   await bcrypt.compare(password, this.password)
 })
 
 UserSchema.method.generateAccessToken = function () {
   const payload = {
     id: this._id,
+    uaesname: this.username,
+     email: this.email
   };
-  return jwt.sign(payload, process.env.Secret_KEY, { expiresIn: "30d" });
+  return jwt.sign(payload, process.env.Secret_KEY, { expiresIn: "1d" });
 };
+
+userSchema.method.generateRefreshToken = function () {
+  const payload = {
+    id: this._id}
+  return jwt.sign(payload, process.env.Secret_KEY, { expiresIn: "7d" });
+}
 
 export default mongoose.model("User", UserSchema);

@@ -3,7 +3,6 @@ import User from "../models/User.model.js";
 export const registerUser = async (req, res , next) => {
     try {
         const { username, email, fullname, password } = req.body;
-
         // Check if user already exists
         const existingUser = await User.findOne({
             $or: [{ username }, { email }]
@@ -16,12 +15,14 @@ export const registerUser = async (req, res , next) => {
             });
         }
 
+        const refreshToken = user.generateRefreshToken();
         // Create new user
         const user = new User({
             username,
             email,
             fullname,
-            password // Password will be hashed by the pre-save middleware
+            password, // Password will be hashed by the pre-save middleware
+            refreshToken
         });
 
         // Save user to database
@@ -90,9 +91,9 @@ export const loginUser = async (req, res) => {
                 avatar: user.avatar
             }
             // accessToken,
+
             // refreshToken
         });
-
     } catch (error) {
         console.error("Error logging in user:", error);
         res.status(500).json({
