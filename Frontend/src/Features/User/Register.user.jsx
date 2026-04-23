@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 
 export function RegisterForm() {
+    const [isdesabled, setdesabled] = useState(false)
     const [formData, setFormData] = useState({
         fullname: "",
         username: "",
@@ -11,18 +12,18 @@ export function RegisterForm() {
     })
 
     const handleChange = (e) => {
-        const {name, value} = e.target
-        setFormData((prev) => ({ ...prev , [name]: value}))
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        try{
+        try {
             axios
-            .post("http://localhost:8000/api/auth/register", formData)
-            .then((response) => {
-                console.log(response.data)
-            })
+                .post("http://localhost:8000/user/register", formData)
+                .then((response) => {
+                    console.log(response.data)
+                })
         } catch (error) {
             console.error("Error occurred while registering user:", error)
         }
@@ -55,14 +56,14 @@ export function RegisterForm() {
                         required="true" />
                     <label for="username">Username</label>
 
-                    <input 
-                        type="text" 
-                        name="username" 
-                        placeholder="Username" 
-                        value={formData.username} 
-                        onChange={handleChange} 
-                        className=" block border-2 rounded-lg" 
-                        required="true" 
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        className=" block border-2 rounded-lg"
+                        required="true"
                     />
 
                     <label for="password">Password</label>
@@ -81,8 +82,8 @@ export function RegisterForm() {
                         type="password"
                         name="confirm_password"
                         placeholder="Confirm password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        // value={formData.password}
+                        // onChange={handleChange}
                         className=" block border-2 rounded-lg"
                         required="true"
                     />
@@ -93,17 +94,19 @@ export function RegisterForm() {
                         type="file"
                         name="avatar"
                         placeholder="Avatar"
-                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]" required="true" />
+                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]" 
+                        // required="true" 
+                        />
 
-                    <label for="avatar">avatar</label>
+                    {/* <label for="avatar">avatar</label> */}
 
-                    <input
+                    {/* <input
                         type="file"
                         name=""
                         placeholder=""
-                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]" />
+                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]" /> */}
 
-                    <button type="submit" className="bg-blue-500 block h-10 w-24 mb-2 border-2 mt-2 m-auto text-white  rounded-2xl hover:bg-green-600 hover:text-1.5xl " > Submit </button>
+                    <button type="submit" onClick={handleSubmit} className="bg-blue-500 block h-10 w-24 mb-2 border-2 mt-2 m-auto text-white  rounded-2xl hover:bg-green-600 hover:text-1.5xl " > Submit </button>
                 </form>
             </div>
         </>
