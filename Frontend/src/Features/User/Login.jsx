@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
+import Api from '../../API/Api.js'
 
 
 export function LoginForm() {
+    const [isdesable, setisdesable] = useState(false)
  const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -18,7 +19,8 @@ export function LoginForm() {
  const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            axios
+            setisdesable(true)
+            Api
                 .post("http://localhost:8000/user/login", formData)
                 .then((response) => {
                     console.log(response.data)
@@ -28,7 +30,7 @@ export function LoginForm() {
         }
     }
     return (
-        <div className=' '>
+        <div className=" dark:bg-gray-800 dark:text-white ">
             <form  className=' clas_inp ' >
 
                 <label htmlFor="userid"> User ID</label>
@@ -37,7 +39,7 @@ export function LoginForm() {
                 type="text" 
                 placeholder='USER ID OR EMAIL'
                 className='p-1 block mb-5  border-2 rounded-lg ' 
-                required="true"
+                required= "true"
                 onChange={handleChange}
                 value={formData.username}
                  />
@@ -55,6 +57,7 @@ export function LoginForm() {
                 <button 
                 type='submit' 
                 onClick={handleSubmit} 
+                desabled = {isdesable}
                 className='bg-blue-500 block h-10 w-24 mb-3 border-2 m-auto text-white  rounded-2xl hover:bg-blue-600 hover:text-1.5xl '
                 > Submit
                 </button>

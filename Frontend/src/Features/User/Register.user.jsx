@@ -1,5 +1,8 @@
 import React, { useState } from "react"
-import axios from "axios"
+import Api from "../../API/Api"
+// import { Client, Account, ID } from "appwrite";
+// import { client } from "../../API/Client";
+
 
 export function RegisterForm() {
     const [isdesabled, setdesabled] = useState(false)
@@ -19,8 +22,8 @@ export function RegisterForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            axios
-                .post("http://localhost:8000/user/register", formData)
+            Api
+                .post("user/register", formData)
                 .then((response) => {
                     console.log(response.data)
                 })
@@ -31,10 +34,10 @@ export function RegisterForm() {
 
     return (
         <>
-            <div className=" m-auto ">
+            <div className=" m-auto  ">
 
-                <form className=" clas_inp ">
-                    <label for="fullname">FullName*</label>
+                <form className=" clas_inp dark:bg-gray-800 dark:text-white " encType="">
+                    <label htmlFor="fullname">FullName*</label>
                     <input
                         type="text"
                         name="fullname"
@@ -94,9 +97,9 @@ export function RegisterForm() {
                         type="file"
                         name="avatar"
                         placeholder="Avatar"
-                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]" 
-                        // required="true" 
-                        />
+                        className=" block border-2 rounded-lg w-1/2 bg-[#6b6a67]"
+                    // required="true" 
+                    />
 
                     {/* <label for="avatar">avatar</label> */}
 

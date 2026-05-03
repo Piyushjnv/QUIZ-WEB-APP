@@ -23,8 +23,7 @@ export const registerUser = async (req, res, next) => {
       username,
       email,
       fullname,
-      password, // Password will be hashed by the pre-save middleware
-      // refreshToken,
+      password, 
     });
 
     // Save user to database
