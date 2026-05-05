@@ -9,10 +9,10 @@ function Layout() {
       <div>
         <Header />
       </div>
-        <div>
+        <div className=' rounded-2xl '>
           <Outlet />
         </div>
-        <div className=' relative w-full h-full '>
+        <div className=' relative w-full h-screen '>
         <Footer />
         </div>
     </div>

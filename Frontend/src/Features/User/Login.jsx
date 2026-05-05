@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Api from '../../API/Api.js'
+import {Navigate} from "react-router-dom"
 
 
 export function LoginForm() {
@@ -23,7 +24,12 @@ export function LoginForm() {
             Api
                 .post("http://localhost:8000/user/login", formData)
                 .then((response) => {
-                    console.log(response.data)
+                    const {user} = response.data
+                    if(user) {
+                        localStorage.setItem("user", JSON.stringify(user))
+                        localStorage.setItem("login", "succesfull")
+                    }
+                    console.log(response.data, user.username, user.email)
                 })
         } catch (error) {
             console.error("Error occurred while registering user:", error)

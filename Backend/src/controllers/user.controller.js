@@ -26,18 +26,7 @@ export const registerUser = async (req, res, next) => {
       password, 
     });
 
-    // Save user to database
-    // const savedUser = await user.save();
-
-    // Return user data (excluding password)
-    // const userResponse = {
-    //   _id: savedUser._id,
-    //   username: savedUser.username,
-    //   email: savedUser.email,
-    //   fullname: savedUser.fullname,
-    //   // avatar: savedUser.avatar,
-    //   // createdAt: savedUser.createdAt,
-    // };
+  
 
     return  res.status(201)
     .json({
@@ -82,7 +71,7 @@ export const loginUser = async (req, res) => {
     const refreshtoken =  await user.generateRefreshToken();
     console.log(refreshtoken, accestoken);
     
-    res
+    return res
     .status(200)
     .json({
       success: true,
@@ -98,7 +87,8 @@ export const loginUser = async (req, res) => {
           expires: new Date(Date.now() + 8 * 3600000),
           httpOnly: true, // cookie will be removed after 8 hours
         })
-        .cookie("refresh_token", `Bearer ${refreshtoken}`, {
+        .cookie("refresh_token", `Bearer ${refreshtoken}`, 
+          {
           expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
           httpOnly: true,
         })
@@ -111,4 +101,13 @@ export const loginUser = async (req, res) => {
       message: "Internal server error",
     });
   }}
+
+export const logout = async (req,res) =>{
+  try {
+    console.log(req.user);
+    
+  } catch (error) {
+    
+  }
+}
 

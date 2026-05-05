@@ -7,7 +7,7 @@ function User() {
     const [IsLogin , setIslogin] = useState(true)
 
     return (
-        <div className='bg-blue-500 h-full flex items-center justify-center '>
+        <div className=' h-full flex items-center justify-center '>
 
             <div className=' w-full h-full md:w-1/2 lg:w-2/5  bg-white  dark:bg-gray-800  '>
 
@@ -20,7 +20,7 @@ function User() {
 
                     </button>
 
-                    <button onClick={() => {setIslogin(false)}} className={` bg-blue-500  h-10 w-24 mb-3 border-2 text-white  rounded-2xl hover:text-1.5xl text-center ${IsLogin ? 'bg-green-400' : 'bg-blue-500'} `}>
+                    <button id="register" onClick={() => {setIslogin(false)}} className={` bg-blue-500  h-10 w-24 mb-3 border-2 text-white  rounded-2xl hover:text-1.5xl text-center ${IsLogin ? 'bg-green-400' : 'bg-blue-500'} `}>
                         
                         Register
                         

@@ -1,0 +1,55 @@
+import addQuestion from "../models/question.models.js";
+
+const addQuestions = async (req, res) => {
+   try {
+     const {
+         Username,
+         Question,
+         Option1,
+         Option2,
+         Option3,
+         Option4,
+         correctoption,
+         category,
+     } = req.body;
+ 
+     console.log( Username,
+         Question,
+         Option1,
+         Option2,
+         Option3,
+         Option4,
+         correctoption,
+         category);
+     
+     const Questions = await addQuestion.create({
+     Username,
+      Question,
+         Option1,
+         Option2,
+         Option3,
+         Option4,
+         correctoption,
+         category,
+ })
+ if (Question){
+    console.log("question added", Question._id);
+    
+ }
+ return res.status(200)
+    .json({
+        succes: true,
+        message: "question added "
+    })
+ 
+   } catch (error) {
+    res.status(500)
+    .json({
+        succes: false,
+        message: "question Not added "
+    })
+   }
+};
+
+
+export default addQuestions
