@@ -1,11 +1,11 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Api from "../API/Api";
 
 function Q_add() {
+  const [islogin , setlogin] = useState()
   const [category, setcategory] = useState("");
-  const userID = (JSON.parse(localStorage.getItem("user")))._id
+  const userID = ((JSON.parse(localStorage.getItem("user")))._id || 1)
   // console.log(userID);
   
   const [question, setQuestion] = useState({

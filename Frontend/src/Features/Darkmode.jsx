@@ -1,14 +1,27 @@
-import { useState } from "react"
+import { useState , useEffect } from "react"
 
 
 
 
 const Darkmode = () => {
-  const [isdark, setisdark] = useState(true)
+  const [isdark, setisdark] = useState(localStorage.getItem('darks') === 'true' ? true : false)
+
+useEffect(
+  () =>{
+   const darks = document.querySelector("html")
+   
+    if (isdark){
+      darks.classList.add('dark')
+    }else{
+       darks.classList.remove('dark')
+    }
+  },
+  [isdark]
+)
+// dark mode button o click 
 
   const clicks = () => {
-    const darks = document.getElementsByTagName("html")
-    darks[0].classList.toggle("dark")
+    localStorage.setItem('darks', !isdark) // store state 
     setisdark(!isdark)
   }
 

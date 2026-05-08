@@ -27,7 +27,7 @@ export function LoginForm() {
                     const {user} = response.data
                     if(user) {
                         localStorage.setItem("user", JSON.stringify(user))
-                        localStorage.setItem("login", "succesfull")
+                        localStorage.setItem("login", true)
                     }
                     console.log(response.data, user.username, user.email)
                 })

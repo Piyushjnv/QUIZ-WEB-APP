@@ -7,17 +7,19 @@ function Header() {
     <div className=' w-full h-30 relative flex flex-row dark:bg-gray-700 bg-[#8002f7]'>
 
       <div id='leftH' className=' dark:text-white basis-2/3'>
-        <div className=' p-5 absolute bottom-0 font-pu '><h1 className='text-2xl bold '> Hi, 
-          {localStorage.getItem("user")? ` ${ 
+        <div className=' p-5 absolute bottom-0  '><h1 className='text-2xl md:text-4xl font-extrabold '> Hi, 
+          {localStorage.getItem("login") === 'true' ? ` ${ 
 (JSON.parse(localStorage.getItem('user')).
 fullname
-)}`:"Welcome"}
+)}`:" And Welcome"}
         </h1>
-        <p>Ready to test your knowledge</p></div>
+        <p className=' font-bold'>Ready to test your knowledge</p>
+        </div>
       </div>
       <div id='righth' className='flex flex-col absolute h-1/1 basis-1/3 right-10 top-5'>
-        
-                <div className='  flex   '>
+      
+        {/*  if user login not show  */}
+        {localStorage.getItem('login') === 'false' &&  <div className='  flex   '>
                   <Link to={"/login"}> 
                     <button  
                     className = {`bg-blue-500  h-10 w-16 md:w-24  ml-9 mr-9 border-2 text-white  rounded-2xl text-center
@@ -31,9 +33,23 @@ fullname
                         
                     </button>
                        </Link>
-                </div>
+                </div>}
+                {/* <div className='  flex   '>
+                  <Link to={"/login"}> 
+                    <button  
+                    className = {`bg-blue-500  h-10 w-16 md:w-24  ml-9 mr-9 border-2 text-white  rounded-2xl text-center
+                      ` }>
+                        Login
+                    </button>
+                       </Link>
+                       <Link to={"/login"}>
+                    <button  className={` bg-blue-500  h-10 w-16 md:w-24  border-2 text-white  rounded-2xl  text-center`}>
+                        Register
+                        
+                    </button>
+                       </Link>
+                </div> */}
                 <div className=' absolute right-0 bottom-10 '>
-
         <Darkmode />
                 </div>
       </div>

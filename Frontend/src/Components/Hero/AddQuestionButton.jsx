@@ -8,7 +8,7 @@ function AddQuestionButton() {
         {console.log(window.location.pathname)}    
             {/* <Link  to={"qadd"}> */}
             <div className=' border rounded-2xl w-40 h-20 dark:bg-gray-600 dark:text-gray-100 p-2 text-center border-l-3 border-purple-600 text-purple-600 text-2xl bold  '
-            onClick={() => navigate('qadd')}
+            onClick={() => navigate('user/qadd')}
             > Question add</div>
     
             {/* </Link> */}
