@@ -7,75 +7,117 @@ import DisplayQuestion from "./DisplayQuestion";
 function Q_attempt() {
   const [questions, setQuestions] = useState([]);
   const [questionsno, setQuestionsno] = useState(1);
+  const [score, setScore] = useState(0);
+  const [nextclicked, setNextClicked] = useState(true);
   const [selectedoption, setSelectedOption] = useState(null);
   const handleOptionData = (incomingData) => {
     setSelectedOption(incomingData);
   };
-  const next = () => {
+
+  const submitq = () => {
+    const correctOption = questions.correctOption;
+    const changecolor = document.getElementById(selectedoption);
+    const changecolorofcorrect = document.getElementById(correctOption);
     console.log("i am next");
-    if (selectedoption == questions.correctOption){
+    if (selectedoption == questions.correctOption) {
+      setScore(score + 1);
+      changecolor.classList.add("bg-green-500");
       console.log("correct");
-      
-    }else {
+    } else {
+      changecolor.classList.add("bg-red-500");
+      changecolorofcorrect.classList.add("bg-green-300");
+
       console.log("incorrect");
     }
+    setNextClicked(false);
+  };
+  const next = () => {
+    const correctOption = questions.correctOption;
+    const changecolor = document.getElementById(selectedoption);
+    const changecolorofcorrect = document.getElementById(correctOption);
+    console.log("i am next");
+
+    if (selectedoption == questions.correctOption) {
+      changecolor.classList.remove("bg-green-500");
+      console.log("correct");
+    } else {
+      changecolor.classList.remove("bg-red-500");
+      changecolorofcorrect.classList.remove("bg-green-300");
+
+      console.log("incorrect");
+    }
+    setQuestionsno(questionsno + 1);
+    // setNextClicked(true);
   };
   const prev = () => {
     console.log("i am prev");
   };
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await API.get("user/qsend")
+        const response = await API.get("user/qsend");
         setQuestions(response.data.data);
+        setNextClicked(false);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
-      
     };
- console.log(questions, "i am questions in useeffect");
     fetchQuestions();
+    console.log(questions, "i am questions in useeffect");
   }, [questionsno]);
 
-  // console.log(questions);
+  console.log(questions);
 
   return (
     <div className=" flex flex-col w-full relative ">
       {/* header */}
-      <div>
+      <div className=" relative">
+        <div className=" mt-3 absolute bg-amber-300 font-bold right-3 rounded text-center text-2xl">
+          score : {score}
+        </div>
         <h1 className=" text-3xl font-bold text-center mt-5">
           Attempt Questions
         </h1>
-        <div className="text-2xl font-bold text-center border-2  bg-amber-300 ">
+        <div className="text-2xl mt-5 font-bold text-center border-2  bg-amber-300 ">
           {questions.category}
         </div>
       </div>
       {/* question section  */}
       <div className="mt-5">
-        <DisplayQuestion  question={questions} sendoptionData={handleOptionData} Qno={questionsno} />
+        <DisplayQuestion
+          question={questions}
+          sendoptionData={handleOptionData}
+          Qno={questionsno}
+        />
       </div>
 
       <div className="flex justify-center mt-5">
-        <div className="border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded cursor-pointer" onClick={next}>
+        <button
+          className="border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded cursor-pointer"
+          onClick={submitq}
+        >
           SUBMIT
-        </div>
+        </button>
       </div>
       {/* buttons at bottom for action  */}
       <div className="flex relative m-10">
-        <div 
-        onClick={prev}
-        className=" absolute left-0 border-2 h-8 w-15 text-center font-bold bg-[green] text-white border-[black] rounded ">
+        <div
+          // descabled={questionsno === 1}
+          onClick={prev}
+          className=" absolute left-0 border-2 h-8 w-15 text-center font-bold bg-[green] text-white border-[black] rounded "
+        >
           PREV
         </div>
         <div></div>
-        <div
-        onClick={next}
-        className=" absolute  right-0 border-2 h-8 w-15 text-center font-bold bg-[green]  text-white border-[black] rounded ">
+        <button
+          disabled={nextclicked}
+          onClick={next}
+          className={`" absolute  right-0 border-2 h-8 w-15 text-center font-bold  cursor-pointer  text-white border-[black] rounded " ${nextclicked ? "bg-gray-500 cursor-not-allowed" : "bg-[green] hover:bg-green-600"} `}
+        >
           NEXT
-        </div>
+        </button>
       </div>
-      
     </div>
   );
 }

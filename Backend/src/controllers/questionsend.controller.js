@@ -3,22 +3,25 @@ import addQuestion from "../models/question.models.js";
 const sendQuestions = async (req, res) => {
     try {
         console.log( "Hello, world!");
-        const questions = await addQuestion.findOne()
-        console.log(questions, "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+  { $sample: { size: 1 } }
+]);
+        console.log(questions[0], "i am questions in controller");
         
 
         return res.status(200)
             .json({
                 success: true,
                 data: { 
-                    username: questions.Username,
-                    question: questions.Question,
-                    option1: questions.Option1,
-                    option2: questions.Option2,
-                    option3: questions.Option3,
-                    option4: questions.Option4,
-                    correctOption: questions.correctoption,
-                    category: questions.category
+                    username: questions[0].Username,
+                    question: questions[0].Question,
+                    option1: questions[0].Option1,
+                    option2: questions[0].Option2,
+                    option3: questions[0].Option3,
+                    option4: questions[0].Option4,
+                    correctOption: questions[0].correctoption,
+                    category: questions[0].category
                 }
             });
     } catch (error) {

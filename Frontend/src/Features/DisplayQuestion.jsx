@@ -11,8 +11,10 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
       <div className=" border-2 mb-2 ">
 
         <div className=" border rounded m-5"> <span className=" font-bold  ">{Qno} : </span> {question.question}</div>
-        <div className=" border rounded flex flex-col ">
-          <div className="flex text-center flex-row  h-15 border-2 m-2">
+
+        <div  className=" border rounded flex flex-col ">
+          {/* option 1 */}
+          <div id="1" className="flex text-center flex-row  h-15 border-2 m-2">
             <input
               type="radio"
               value={question.option1}
@@ -26,9 +28,9 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
               placeholder={`hii`}
               className=" m-2 border rounded"
             />
-            <label className=" " htmlFor="option1">hii {question.option1}</label>
+            <label className=" " htmlFor="option1"> {question.option1}</label>
           </div>
-          <div className="flex text-center flex-row  h-15 border-2 m-2">
+          <div id="2" className="flex text-center flex-row  h-15 border-2 m-2">
             {" "}
             <input
             className=" m-2 border rounded"
@@ -46,7 +48,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
             />
             <label htmlFor="option2">{question.option2}</label>
           </div>
-          <div className="flex text-center flex-row  h-15 border-2 m-2">
+          <div id="3" className="flex text-center flex-row  h-15 border-2 m-2">
             {" "}
             <input
               type="radio"
@@ -63,7 +65,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
             />
             <label htmlFor="option3">{question.option3}</label>
           </div>
-          <div className="flex text-center flex-row  h-15 border-2 m-2">
+          <div id="4" className="flex text-center flex-row  h-15 border-2 m-2">
             <input
               type="radio"
               id="option4"

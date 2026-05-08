@@ -27,11 +27,25 @@ function Q_add() {
   const Onsubmit = () => {
     try {
       console.log(question);
-
+// questu
       Api
       .post("/user/qadd", question).then(
         (response)=>{
           const data = response.data
+          if( data.succes == true) {
+            alert("question added successfully")
+             setQuestion({
+            Username: userID,
+            Question: "",
+            Option1: "",
+            Option2: "",
+            Option3: "",
+            Option4: "",
+            correctoption: "",
+            category: "",
+          });
+          }
+         
           console.log(data);
           
         }
@@ -153,14 +167,15 @@ function Q_add() {
           }
           id="Category">
           <option value="NA">N/A ?</option>
-          <option value="Scince">Science</option>
+          <option value="Science">Science</option>
           <option value="History">History</option>
           <option value="General">General</option>
           <option value="Current">Current</option>
           <option value="Geography">Geography</option>
           <option value="Polity">Polity</option>
           <option value="Economics">Economics</option>
-          <option value="Staitc">Staitc</option>
+          <option value="Computer">Computer</option>
+          <option value="Static">Static</option>
         </select>
       </div>
       <div className=" flex w-full justify-center">
