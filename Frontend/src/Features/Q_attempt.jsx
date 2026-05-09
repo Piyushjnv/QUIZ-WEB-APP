@@ -47,7 +47,7 @@ function Q_attempt() {
       console.log("incorrect");
     }
     setQuestionsno(questionsno + 1);
-    // setNextClicked(true);
+    setNextClicked(true);
   };
   const prev = () => {
     console.log("i am prev");
@@ -58,7 +58,7 @@ function Q_attempt() {
       try {
         const response = await API.get("user/qsend");
         setQuestions(response.data.data);
-        setNextClicked(false);
+        // setNextClicked(false);
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
@@ -79,12 +79,12 @@ function Q_attempt() {
         <h1 className=" text-3xl font-bold text-center mt-5">
           Attempt Questions
         </h1>
-        <div className="text-2xl mt-5 font-bold text-center border-2  bg-amber-300 ">
-          {questions.category}
+        <div className="text-2xl w-fit p-2 mt-5  text-center border-2  bg-amber-300 ">
+         category :  {questions.category}
         </div>
       </div>
       {/* question section  */}
-      <div className="mt-5">
+      <div className="mt-5 ">
         <DisplayQuestion
           question={questions}
           sendoptionData={handleOptionData}
@@ -113,7 +113,7 @@ function Q_attempt() {
         <button
           disabled={nextclicked}
           onClick={next}
-          className={`" absolute  right-0 border-2 h-8 w-15 text-center font-bold  cursor-pointer  text-white border-[black] rounded " ${nextclicked ? "bg-gray-500 cursor-not-allowed" : "bg-[green] hover:bg-green-600"} `}
+          className={`" absolute  right-0 border-2 h-8 w-15 text-center font-bold    text-white border-[black] rounded " ${nextclicked ? "bg-gray-500 cursor-not-allowed" : "bg-[green] cursor-pointer hover:bg-green-600"} `}
         >
           NEXT
         </button>
