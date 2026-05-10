@@ -10,16 +10,18 @@ function Q_attempt() {
   const [score, setScore] = useState(0);
   const [nextclicked, setNextClicked] = useState(true);
   const [selectedoption, setSelectedOption] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
   const handleOptionData = (incomingData) => {
     setSelectedOption(incomingData);
   };
 
+   const correctOption = questions.correctOption;
+    const changecolor = document.getElementById(`${selectedoption}`);
+    const changecolorofcorrect = document.getElementById(`${correctOption}`);
   const submitq = () => {
-    const correctOption = questions.correctOption;
-    const changecolor = document.getElementById(selectedoption);
-    const changecolorofcorrect = document.getElementById(correctOption);
-    console.log("i am next");
-    if (selectedoption == questions.correctOption) {
+   
+    console.log("submitted run ");
+    if (selectedoption == questions.correctOption ) {
       setScore(score + 1);
       changecolor.classList.add("bg-green-500");
       console.log("correct");
@@ -29,24 +31,24 @@ function Q_attempt() {
 
       console.log("incorrect");
     }
+    setSubmitted(false);
     setNextClicked(false);
   };
+
   const next = () => {
-    const correctOption = questions.correctOption;
-    const changecolor = document.getElementById(selectedoption);
-    const changecolorofcorrect = document.getElementById(correctOption);
-    console.log("i am next");
+    // console.log("i am next");
 
     if (selectedoption == questions.correctOption) {
       changecolor.classList.remove("bg-green-500");
-      console.log("correct");
+      // console.log("correct");
     } else {
       changecolor.classList.remove("bg-red-500");
       changecolorofcorrect.classList.remove("bg-green-300");
 
-      console.log("incorrect");
+      // console.log("incorrect");
     }
     setQuestionsno(questionsno + 1);
+    setSubmitted(false);
     setNextClicked(true);
   };
   const prev = () => {
@@ -64,23 +66,26 @@ function Q_attempt() {
       }
     };
     fetchQuestions();
-    console.log(questions, "i am questions in useeffect");
+    // console.log(questions, "i am questions in useeffect");
   }, [questionsno]);
 
-  console.log(questions);
+  // console.log(questions);
 
   return (
-    <div className=" flex flex-col w-full relative ">
+    <div className=" flex flex-col relative mt-10">
       {/* header */}
       <div className=" relative">
-        <div className=" mt-3 absolute bg-amber-300 font-bold right-3 rounded text-center text-2xl">
+        <div className="flex flex-col items-center mb-8">
+          <h1 className=" text-3xl font-bold mb-2 mt-5">
+            Attempt <span className=" text-blue-800">Question</span>
+          </h1>
+          <div className="w-37 h-1 bg-blue-500 rounded-full"></div>
+        </div>
+        <div className=" mt-3 absolute bg-amber-200 font-bold right-3 rounded-lg border-gray-300 shadow-lg text-center text-2xl">
           score : {score}
         </div>
-        <h1 className=" text-3xl font-bold text-center mt-5">
-          Attempt Questions
-        </h1>
-        <div className="text-2xl w-fit p-2 mt-5  text-center border-2  bg-amber-300 ">
-         category :  {questions.category}
+        <div className="md:text-xl font-bold w-fit p-2 mt-5 ml-5  text-center border-2 border-gray-300 shadow-lg rounded-lg bg-amber-200 ">
+          category : {questions.category}
         </div>
       </div>
       {/* question section  */}
@@ -94,7 +99,10 @@ function Q_attempt() {
 
       <div className="flex justify-center mt-5">
         <button
-          className="border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded cursor-pointer"
+          isdisabled={`${!submitted}`}
+          className={`"border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded cursor-pointer"
+              ${submitted ? "bg-gray-500 cursor-not-allowed" : "bg-[green] cursor-pointer hover:bg-green-600"}
+             `}
           onClick={submitq}
         >
           SUBMIT
@@ -123,30 +131,3 @@ function Q_attempt() {
 }
 
 export default Q_attempt;
-// category
-// :
-// "Current"
-// correctOption
-// :
-// "3"
-// option1
-// :
-// "fndsjfjdf"
-// option2
-// :
-// "mfsdnfjdf"
-// option3
-// :
-// "kfjdjhf"
-// option4
-// :
-// "dfjfdhf"
-// question
-// :
-// "jfhsdjfd"
-// username
-// :
-// "69ea5ce6b7e89e3b595a60dc"
-// [[Prototype]]
-// :
-// Object

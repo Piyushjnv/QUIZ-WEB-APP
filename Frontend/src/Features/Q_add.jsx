@@ -32,7 +32,7 @@ function Q_add() {
       .post("/user/qadd", question).then(
         (response)=>{
           const data = response.data
-          if( data.succes == true) {
+          if( data.success == true) {
             alert("question added successfully")
              setQuestion({
             Username: userID,
@@ -173,9 +173,10 @@ function Q_add() {
           <option value="Current">Current</option>
           <option value="Geography">Geography</option>
           <option value="Polity">Polity</option>
+          <option value="Games">Games</option>
+          <option value="Static">Static</option>
           <option value="Economics">Economics</option>
           <option value="Computer">Computer</option>
-          <option value="Static">Static</option>
         </select>
       </div>
       <div className=" flex w-full justify-center">

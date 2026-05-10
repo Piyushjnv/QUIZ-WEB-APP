@@ -33,19 +33,19 @@ const addQuestions = async (req, res) => {
          category,
  })
  if (Question){
-    console.log("question added", Question._id);
+    console.log("question added", Questions._id);
     
  }
  return res.status(200)
     .json({
-        succes: true,
+        success: true,
         message: "question added "
     })
  
    } catch (error) {
     res.status(500)
     .json({
-        succes: false,
+        success: false,
         message: "question Not added "
     })
    }

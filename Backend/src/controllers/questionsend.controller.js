@@ -7,7 +7,7 @@ const sendQuestions = async (req, res) => {
         const questions = await addQuestion.aggregate([
   { $sample: { size: 1 } }
 ]);
-        console.log(questions[0], "i am questions in controller");
+        // console.log(questions[0], "i am questions in controller");
         
 
         return res.status(200)

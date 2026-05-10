@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import Api from '../../API/Api.js'
-import {Navigate} from "react-router-dom"
+import {Navigate, useNavigate} from "react-router-dom"
 
 
 export function LoginForm() {
+    const navigate = useNavigate()
     const [isdesable, setisdesable] = useState(false)
  const [formData, setFormData] = useState({
         username: "",
@@ -28,6 +29,7 @@ export function LoginForm() {
                     if(user) {
                         localStorage.setItem("user", JSON.stringify(user))
                         localStorage.setItem("login", true)
+                        navigate("/")
                     }
                     console.log(response.data, user.username, user.email)
                 })

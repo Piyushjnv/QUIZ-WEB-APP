@@ -2,24 +2,23 @@ import React from 'react'
 import AddQuestionButton from './AddQuestionButton'
 import { useLocation } from 'react-router-dom'
 import AttemptQuiz from './AttemptQuiz'
+// import Questionaddinbulk from '../../Features/Questionaddinbulk'
 
 function Index() {
   const location = useLocation()
 
   return (
-    <div>
-      
-        {/* <p className=' text-2xl bg-amber-700'>hii</p> */}
-        {console.log("hii")
-        }
-        <div className={` flex flex-row mx-auto justify-between`}>
-          <div className=' basis-1/2 '>
-        {!(location.pathname === '/user/qadd') && <AddQuestionButton /> }
+    <div className=' max-w-full mt-10 flex  justify-between'>
+  
+          <div className='  '>
+         <AddQuestionButton /> 
           </div>
-          <div className=' basis-1/2 '>
-        {!(location.pathname === '/user/qattempt') && <AttemptQuiz /> }
+
+          <div className=' '>
+         <AttemptQuiz /> 
           </div>
-        </div>
+          {/* <div><Questionaddinbulk /></div> */}
+    
     </div>
   )
 }

@@ -5,14 +5,14 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <div className=" w-full  flex flex-col box-border">
+    <div className=" max-w-9/10 mx-auto rounded-xl border-2 border-gray-100  shadow-2xl  flex flex-col box-border">
 
         {/*  question and option  */}
-      <div className=" border-2 mb-2 ">
+      <div className="  ">
 
-        <div className=" border rounded m-5"> <span className=" font-bold  ">{Qno} : </span> {question.question}</div>
+        <div className=" bg-white h-15 item-center border-2 rounded m-2 mt-5 mb-5"> <span className="  font-bold  m-2">{Qno} : </span> {question.question}</div>
 
-        <div  className=" border rounded flex flex-col ">
+        <div  className=" rounded flex flex-col ">
           {/* option 1 */}
           <div 
           id="1" 
@@ -20,7 +20,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
              setSelectedOption(question.option1);
                 sendoptionData(1);
           }}
-          className="flex text-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
+          className="flex  text-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
             <input
               type="radio"
               value={question.option1}
@@ -29,7 +29,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
               id="option1"
               name="option"
               placeholder={`hii`}
-              className=" m-2 border rounded"
+              className=" m-2"
             />
             <label className=" " htmlFor="option1"> {question.option1}</label>
           </div>
@@ -39,7 +39,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
              setSelectedOption(question.option2);
                 sendoptionData(2);
           }}
-          className="flex text-center items-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
+          className="flex  text-center items-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
             
             <input
             className=" m-2 border rounded"
@@ -50,7 +50,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
              
               name="option"
               placeholder=""
-              className="  border rounded"
+              className=" m-2 border rounded"
             />
             <label htmlFor="option2">{question.option2}</label>
           </div>
@@ -59,7 +59,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
             setSelectedOption(question.option3);
                 sendoptionData(3); 
           }}
-          className="flex text-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
+          className="flex  text-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
             {" "}
             <input
               type="radio"
@@ -69,7 +69,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
              
               value={question.option3}
               placeholder=""
-              className="  border rounded"
+              className=" m-2  border rounded"
             />
             <label htmlFor="option3">{question.option3}</label>
           </div>
@@ -78,7 +78,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
              setSelectedOption(question.option4);
                 sendoptionData(4);
           }}
-          className="flex text-center flex-row  h-15 border-2 m-2 cursor-pointer hover:bg-gray-100 transition-colors rounded">
+          className="flex  text-center flex-row  h-15 border-2 m-2 mb-5 cursor-pointer hover:bg-gray-100 transition-colors rounded">
             <input
               type="radio"
               id="option4"
@@ -86,7 +86,7 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
               name="option"
               value={question.option4}
               placeholder=""
-              className="  border rounded"
+              className=" m-2 border rounded"
             />
             <label htmlFor="option4">{question.option4}</label>
           </div>

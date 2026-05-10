@@ -7,16 +7,7 @@ import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 
 
-// const Hero = ()=> {
-//     return(
-//         <>
-//         <div  className=' w-screen m-1 relative'>
-//         {localStorage.getItem('login') && < Index />  }
-//         <Outlet />
-//         </div>
-//         </>
-//     )
-// }
+
 const Routes = createBrowserRouter([
     {
         path:"/",
@@ -33,6 +24,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/login",
                 element:< User />
+            },
+            {
+                path:"/qattempt",
+                element: <Q_attempt/>
             },
              {
                 path:"/user",
