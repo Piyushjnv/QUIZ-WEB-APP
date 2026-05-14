@@ -3,7 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import user_scoreModels from "./user_score.models.js";
 
-const UserSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema(
+  {
     username: {
       type: String,
       unique: true,
@@ -34,34 +35,41 @@ const UserSchema = mongoose.Schema({
     },
     refreshToken: {
       type: String,
-    }
+    },
   },
   { timestamps: true },
 );
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-     this.password = await bcrypt.hash(this.password, 16)
-        // next();
-    });
+  this.password = await bcrypt.hash(this.password, 16);
+  // next();
+});
 
-UserSchema.methods.comparePassword =  async function (password) {
-  
-      return   await bcrypt.compare(password, this.password)
-}
+UserSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 UserSchema.methods.generateAccessToken = function () {
-  const payload = {
-    id: this._id,
-    uaesname: this.username,
-     email: this.email
-  };
-  return jwt.sign(payload, process.env.Secret_KEY, { expiresIn: "1d" });
+ 
+  return jwt.sign(
+    {
+      id: this._id,
+      uaesname: this.username,
+      email: this.email,
+    },
+    process.env.Secret_KEY,
+    { expiresIn: "1d" },
+  );
 };
 
 UserSchema.methods.generateRefreshToken = function () {
-  const payload = {
-    id: this._id}
-  return jwt.sign(payload, process.env.Secret_KEY, { expiresIn: "7d" });
-}
+  return jwt.sign(
+    {
+      id: this._id,
+    },
+    process.env.Secret_KEY,
+    { expiresIn: "7d" },
+  );
+};
 
 export default mongoose.model("User", UserSchema);

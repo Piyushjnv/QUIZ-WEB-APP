@@ -4,6 +4,7 @@ import Routes from './Routes'
 
 
 function App() {
+console.log("first appjsx");
 
 
   return (

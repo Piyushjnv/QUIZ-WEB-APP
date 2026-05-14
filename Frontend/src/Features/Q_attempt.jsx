@@ -10,17 +10,22 @@ function Q_attempt() {
   const [score, setScore] = useState(0);
   const [nextclicked, setNextClicked] = useState(true);
   const [selectedoption, setSelectedOption] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(true);
+
   const handleOptionData = (incomingData) => {
     setSelectedOption(incomingData);
   };
 
    const correctOption = questions.correctOption;
+  //  console.log("!selectedoption = ",!selectedoption);
+  //  console.log("!selectedoption = ", selectedoption);
+  //  console.log("after option change  !submitted || !selectedoption ==", !submitted || !selectedoption);
+   
     const changecolor = document.getElementById(`${selectedoption}`);
     const changecolorofcorrect = document.getElementById(`${correctOption}`);
   const submitq = () => {
    
-    console.log("submitted run ");
+    // console.log("submitted run ",submitted);
     if (selectedoption == questions.correctOption ) {
       setScore(score + 1);
       changecolor.classList.add("bg-green-500");
@@ -47,8 +52,9 @@ function Q_attempt() {
 
       // console.log("incorrect");
     }
+    setSelectedOption(null)
     setQuestionsno(questionsno + 1);
-    setSubmitted(false);
+    setSubmitted(true);
     setNextClicked(true);
   };
   const prev = () => {
@@ -72,7 +78,7 @@ function Q_attempt() {
   // console.log(questions);
 
   return (
-    <div className=" flex flex-col relative mt-10">
+    <div className=" flex flex-col relative mt-10 max-w-xl md:max-w-4xl mx-auto">
       {/* header */}
       <div className=" relative">
         <div className="flex flex-col items-center mb-8">
@@ -88,7 +94,9 @@ function Q_attempt() {
           category : {questions.category}
         </div>
       </div>
+
       {/* question section  */}
+
       <div className="mt-5 ">
         <DisplayQuestion
           question={questions}
@@ -97,11 +105,15 @@ function Q_attempt() {
         />
       </div>
 
+{/*  buttons  */}
+
       <div className="flex justify-center mt-5">
         <button
-          isdisabled={`${!submitted}`}
-          className={`"border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded cursor-pointer"
-              ${submitted ? "bg-gray-500 cursor-not-allowed" : "bg-[green] cursor-pointer hover:bg-green-600"}
+          disabled={!submitted || !selectedoption}
+          // isdisabled
+          // isdisabled={`${!submitted || !selectedoption}`}
+          className={`border-2 h-8 px-6 text-center font-bold bg-[green] text-white border-[black] rounded
+             ${!submitted || !selectedoption ? "bg-gray-500 cursor-not-allowed" : "bg-[green] cursor-pointer hover:bg-green-600"}
              `}
           onClick={submitq}
         >
@@ -109,7 +121,7 @@ function Q_attempt() {
         </button>
       </div>
       {/* buttons at bottom for action  */}
-      <div className="flex relative m-10">
+      <div className="flex relative mt-5 m-10">
         <div
           // descabled={questionsno === 1}
           onClick={prev}

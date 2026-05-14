@@ -54,9 +54,10 @@ function Q_add() {
   };
 
   return (
-    <div className=" mx-auto p-5 w-full ">
+    <div className="md:max-w-8/10 mx-auto p-5 w-full ">
       <div className=" border p-4 rounded-lg shadow-md bg-white text-2xl">
-        <div className="w-full">
+       
+        <div className="flex flex-col box-border ">
           <input
             type="text"
             value={question.Question}
@@ -65,42 +66,57 @@ function Q_add() {
             placeholder="Enter a question..."
             className=" m-3 p-2 border rounded-lg  "
           />
-        </div>
-        <div className="flex flex-col">
+          <div className=" w-full m-3 box-border ">
+            
+             <input
+            type="text"
+            value={question.Option1}
+            onChange={handleChange}
+            placeholder="Option 1"
+            name="Option1"
+            className=" p-2 w-96/100
+        
+        border rounded-lg "
+          />
+          </div>
+           <div className=" w-full m-3 box-border ">
           <input
             type="text"
             value={question.Option1}
             onChange={handleChange}
             placeholder="Option 1"
             name="Option1"
-            className=" m-3 p-2 
+            className=" p-2  w-96/100
         
         border rounded-lg "
-          />
+          /></div>
+           <div className=" w-full m-3 box-border ">
           <input
             type="text"
             placeholder="Option 2"
             name="Option2"
             value={question.Option2}
             onChange={handleChange}
-            className=" m-3 p-2 border rounded-lg "
-          />
+            className=" p-2 border  w-96/100 rounded-lg "
+          /></div>
+           <div className=" w-full m-3 box-border ">
           <input
             type="text"
             placeholder="Option 3"
             name="Option3"
             value={question.Option3}
             onChange={handleChange}
-            className=" m-3 p-2 border rounded-lg "
-          />
+            className=" p-2 border  w-96/100 rounded-lg "
+          /></div>
+           <div className=" w-full m-3 box-border ">
           <input
             type="text"
             placeholder="Option 4"
             name="Option4"
             value={question.Option4}
             onChange={handleChange}
-            className=" m-3 p-2 border rounded-lg "
-          />
+            className=" p-2 border  w-96/100 rounded-lg "
+          /></div>
         </div>
       </div>
 

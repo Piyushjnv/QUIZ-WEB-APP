@@ -8,7 +8,7 @@ function Index() {
   const location = useLocation()
 
   return (
-    <div className=' max-w-full mt-10 flex  justify-between'>
+    <div className=' mt-10 flex   '>
   
           <div className='  '>
          <AddQuestionButton /> 

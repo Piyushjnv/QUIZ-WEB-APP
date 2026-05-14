@@ -5,12 +5,12 @@ function DisplayQuestion({question , Qno, sendoptionData }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <div className=" max-w-9/10 mx-auto rounded-xl border-2 border-gray-100  shadow-2xl  flex flex-col box-border">
+    <div className=" max-w-8/10 mx-auto rounded-xl border-2 border-gray-100  shadow-2xl  flex flex-col box-border">
 
         {/*  question and option  */}
       <div className="  ">
 
-        <div className=" bg-white h-15 item-center border-2 rounded m-2 mt-5 mb-5"> <span className="  font-bold  m-2">{Qno} : </span> {question.question}</div>
+        <div className=" bg-white  min-h-15 max-h-fit font-bold p-2 item-center border-2 rounded m-2 mt-5 mb-5"> <span className="  font-bold  m-2">{Qno} : </span> {question.question}</div>
 
         <div  className=" rounded flex flex-col ">
           {/* option 1 */}

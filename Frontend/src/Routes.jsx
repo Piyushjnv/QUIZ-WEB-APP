@@ -5,6 +5,7 @@ import User from './Features/User'
 import Q_add from './Features/Q_add'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
+import Profile from './Components/Header/Profile'
 
 
 
@@ -40,6 +41,10 @@ const Routes = createBrowserRouter([
                     {
                         path:"/user/qadd",
                         element: <Q_add />
+                    },
+                    {
+                        path:"/user/profile",
+                        element: <Profile />
                     },
                     {
                         path:"/user/qattempt",
