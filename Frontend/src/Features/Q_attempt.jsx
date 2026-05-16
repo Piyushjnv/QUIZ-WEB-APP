@@ -11,31 +11,36 @@ function Q_attempt() {
   const [nextclicked, setNextClicked] = useState(true);
   const [selectedoption, setSelectedOption] = useState(null);
   const [submitted, setSubmitted] = useState(true);
+  const [desableOptions, setdesableOptions] = useState(false);
+  // const [changecolor, setchangecolor] = useState()
 
   const handleOptionData = (incomingData) => {
     setSelectedOption(incomingData);
   };
 
    const correctOption = questions.correctOption;
-  //  console.log("!selectedoption = ",!selectedoption);
-  //  console.log("!selectedoption = ", selectedoption);
+   console.log("!selectedoption = ",!selectedoption);
+   console.log("!selectedoption = ", selectedoption);
   //  console.log("after option change  !submitted || !selectedoption ==", !submitted || !selectedoption);
    
     const changecolor = document.getElementById(`${selectedoption}`);
     const changecolorofcorrect = document.getElementById(`${correctOption}`);
   const submitq = () => {
-   
+  //  setchangecolor(document.getElementById(`${selectedoption}`))
     // console.log("submitted run ",submitted);
     if (selectedoption == questions.correctOption ) {
       setScore(score + 1);
-      changecolor.classList.add("bg-green-500");
+      changecolor.classList.add("bg-[#0080003b]");
+      changecolor.classList.add("border-[green]");
       console.log("correct");
     } else {
-      changecolor.classList.add("bg-red-500");
-      changecolorofcorrect.classList.add("bg-green-300");
+      changecolor.classList.add("bg-[#fb2c36c2]");
+      changecolor.classList.add("border-red");
+      changecolorofcorrect.classList.add("bg-[#00800024]");
 
       console.log("incorrect");
     }
+    setdesableOptions(true)
     setSubmitted(false);
     setNextClicked(false);
   };
@@ -44,14 +49,17 @@ function Q_attempt() {
     // console.log("i am next");
 
     if (selectedoption == questions.correctOption) {
-      changecolor.classList.remove("bg-green-500");
+      changecolor.classList.remove("bg-[#0080003b]");
+      changecolor.classList.remove("border-[green]");
       // console.log("correct");
     } else {
-      changecolor.classList.remove("bg-red-500");
-      changecolorofcorrect.classList.remove("bg-green-300");
+      changecolor.classList.remove("bg-[#fb2c36c2]");
+      changecolor.classList.remove("border-red");
+      changecolorofcorrect.classList.remove("bg-[#00800024]");
 
       // console.log("incorrect");
     }
+    setdesableOptions(false)
     setSelectedOption(null)
     setQuestionsno(questionsno + 1);
     setSubmitted(true);
@@ -78,7 +86,7 @@ function Q_attempt() {
   // console.log(questions);
 
   return (
-    <div className=" flex flex-col relative mt-10 max-w-xl md:max-w-4xl mx-auto">
+    <div className=" flex flex-col relative mt-10 max-w-xl md:max-w-4xl mx-auto mb-10">
       {/* header */}
       <div className=" relative">
         <div className="flex flex-col items-center mb-8">
@@ -87,10 +95,22 @@ function Q_attempt() {
           </h1>
           <div className="w-37 h-1 bg-blue-500 rounded-full"></div>
         </div>
-        <div className=" mt-3 absolute bg-amber-200 font-bold right-3 rounded-lg border-gray-300 shadow-lg text-center text-2xl">
+        <div className=" mt-3 absolute md:text-xl  text-[#f5c518]  font-bold right-3 mr-5 bg-[#f5c51833] p-1 rounded-full border-2 border-gray-300 shadow-lg text-center text-2xl">
           score : {score}
         </div>
-        <div className="md:text-xl font-bold w-fit p-2 mt-5 ml-5  text-center border-2 border-gray-300 shadow-lg rounded-lg bg-amber-200 ">
+        {/*     display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(245, 197, 24, 0.2);
+    color: #f5c518;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 5px 12px;
+    
+    margin-bottom: 14px; */}
+        <div className="md:text-xl font-bold text-[#f5c518] w-fit p-2 mt-5 ml-5 bg-[#f5c51833]  text-center border-2 mb-3.5 border-gray-300 shadow-lg rounded-full ">
           category : {questions.category}
         </div>
       </div>
@@ -99,6 +119,7 @@ function Q_attempt() {
 
       <div className="mt-5 ">
         <DisplayQuestion
+        desableooption={desableOptions}
           question={questions}
           sendoptionData={handleOptionData}
           Qno={questionsno}

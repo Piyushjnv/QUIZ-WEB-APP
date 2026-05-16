@@ -6,6 +6,7 @@ import Q_add from './Features/Q_add'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import Profile from './Components/Header/Profile'
+import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 
 
 
@@ -17,6 +18,11 @@ const Routes = createBrowserRouter([
             {
                 index : true,
                 element: <Index />
+            },
+            {
+                path: "/qgen",
+                element: <QuizGenerator />
+
             },
             {
                 path:"/about",

@@ -20,7 +20,7 @@ function Logoutuser() {
   return (
     <div
       onClick={logout}
-      className="m-10 w-30 text-center p-2 h-10 bg-amber-50 border-2 rounded-2xl font-semibold  "
+      className="m-10 w-30 text-center p-2 h-10 border-[#ffd53ed0]  bg-[#ffd53e4b] hover:bg-[#9618188f] border-2 rounded-2xl font-semibold  "
     >
       Logout user
     </div>

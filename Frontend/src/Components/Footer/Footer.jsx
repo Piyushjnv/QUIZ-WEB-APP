@@ -3,9 +3,9 @@ import Logoutuser from '../../Features/User/Logout.user'
 function Footer() {
  
   return (
-    <div className='absolute w-full h-50 bottom-0  bg-gray-700'>
+    <div className=' w-full h-50 bottom-0  bg-gray-700'>
       
-        <div className=' absolute m-auto bottom-0 '><Logoutuser /> </div>
+        <div className=' bottom-0 absolute  justify-center'><Logoutuser /> </div>
     </div>
   )
 }

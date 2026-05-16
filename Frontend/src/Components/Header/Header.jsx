@@ -27,7 +27,7 @@ const navigte = useNavigate()
 // const x = 0
 
   return (
-    <div className=' w-full h-30 relative flex flex-row dark:bg-gray-700 bg-[#8002f7]'>
+    <div className=' w-full h-30 relative flex flex-row bg-gray-700'>
 
       <div id='leftH' className=' dark:text-white basis-2/3'>
         <div className=' p-5 absolute bottom-0  '><h1 className='text-2xl md:text-4xl font-extrabold '> Hi, 

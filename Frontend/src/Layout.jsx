@@ -5,16 +5,16 @@ import Footer from "./Components/Footer/Footer"
 
 function Layout() {
   return (
-    <div className='w-screen h-full'>
+    <div className=' relative flex flex-col min-w-screen min-h-screen bg-[#0a0a0f] m-0 p-0 box-border  '>
       <div>
         <Header />
       </div>
-        <div className=' rounded-2xl '>
+        <div className='flex-1'>
           <Outlet />
         </div>
-        <div className=' relative w-full h-screen '>
+        <footer className=' h-1/5  w-full bottom-0'>
         <Footer />
-        </div>
+        </footer>
     </div>
   )
 }
