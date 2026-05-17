@@ -9,7 +9,7 @@ function User() {
     return (
         <div className=' h-full flex items-center justify-center '>
 
-            <div className=' w-full h-full md:w-1/2 lg:w-2/5  bg-white  dark:bg-gray-800  '>
+            <div className=' w-full h-full md:w-1/2 lg:w-2/5  mb-10 mt-10 bg-gray-800  '>
 
                 <div className=' w-1/1 flex mt-10 mb-5 p-4 mx-auto '>
                     <button onClick={() => {setIslogin(true)}} 

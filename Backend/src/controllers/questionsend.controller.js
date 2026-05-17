@@ -2,7 +2,7 @@ import addQuestion from "../models/question.models.js";
 
 const sendQuestions = async (req, res) => {
     try {
-        console.log( "Hello, world!");
+        // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
         const questions = await addQuestion.aggregate([
   { $sample: { size: 1 } }

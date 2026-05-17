@@ -1,9 +1,20 @@
-import React from 'react'
-import { Outlet } from "react-router-dom"
+import React ,{ useEffect} from 'react'
+import { Outlet , useNavigate} from "react-router-dom"
 import Header from "./Components/Header/Header"
 import Footer from "./Components/Footer/Footer"
 
 function Layout() {
+  const navigate = useNavigate()
+    useEffect(
+    ()=> {
+       if( localStorage.getItem('login')){
+          navigate('/user')
+          console.log('tudnfjndf');
+          
+       }
+    },[]
+  )
+
   return (
     <div className=' relative flex flex-col min-w-screen min-h-screen bg-[#0a0a0f] m-0 p-0 box-border  '>
       <div>

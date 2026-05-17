@@ -29,7 +29,7 @@ export function LoginForm() {
                     if(user) {
                         localStorage.setItem("user", JSON.stringify(user))
                         localStorage.setItem("login", true)
-                        navigate("/")
+                        navigate("/user")
                     }
                     console.log(response.data, user.username, user.email)
                 })
@@ -39,10 +39,11 @@ export function LoginForm() {
     }
     return (
         <div className=" dark:bg-gray-800 dark:text-white ">
-            <form  className=' clas_inp ' >
+            <form onSubmit={handleSubmit} className=' clas_inp ' >
 
                 <label htmlFor="userid"> User ID</label>
                 <input 
+                autoComplete='username'
                 name='username' 
                 type="text" 
                 placeholder='USER ID OR EMAIL'
@@ -64,7 +65,7 @@ export function LoginForm() {
 
                 <button 
                 type='submit' 
-                onClick={handleSubmit} 
+               
                 desabled = {isdesable}
                 className='bg-blue-500 block h-10 w-24 mb-3 border-2 m-auto text-white  rounded-2xl hover:bg-blue-600 hover:text-1.5xl '
                 > Submit

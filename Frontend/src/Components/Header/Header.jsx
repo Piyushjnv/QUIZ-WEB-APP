@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Profile from './Profile'
 import { useNavigate } from 'react-router-dom'
 function Header() {
-console.log("header jsx");
+// console.log("header jsx");
 const x = 0 
 const navigte = useNavigate()
 var user
