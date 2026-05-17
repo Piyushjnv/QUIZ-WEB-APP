@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import Api from "../../API/Api"
 // import { Client, Account, ID } from "appwrite";
 // import { client } from "../../API/Client";
 
 
 export function RegisterForm() {
+    const navigate = useNavigate()
     const [isdesabled, setdesabled] = useState(false)
     const [formData, setFormData] = useState({
         fullname: "",
@@ -26,6 +28,12 @@ export function RegisterForm() {
                 .post("user/register", formData)
                 .then((response) => {
                     console.log(response.data)
+                    if (response.data.success) {
+                        localStorage.setItem("user", JSON.stringify(response.data.User))
+                        localStorage.setItem("login", true)
+                        navigate("/user")
+                    }
+
                 })
         } catch (error) {
             console.error("Error occurred while registering user:", error)

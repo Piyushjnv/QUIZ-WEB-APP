@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
   const [selectedOption, setSelectedOption] = useState(null);
-  console.log(desableooption);
+  // console.log(desableooption);
 
   return (
     <div className=" max-w-8/10 mx-auto   flex flex-col box-border text-white ">

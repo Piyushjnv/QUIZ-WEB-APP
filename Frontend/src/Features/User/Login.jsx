@@ -23,7 +23,7 @@ export function LoginForm() {
         try {
             setisdesable(true)
             Api
-                .post("http://localhost:8000/user/login", formData)
+                .post(`user/login`, formData)
                 .then((response) => {
                     const {user} = response.data
                     if(user) {

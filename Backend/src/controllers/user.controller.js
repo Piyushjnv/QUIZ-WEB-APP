@@ -27,14 +27,29 @@ export const registerUser = async (req, res, next) => {
       password, 
     });
 
-  
+   const accestoken = await user.generateAccessToken();
+    const refreshtoken =  await user.generateRefreshToken();
 
     return  res.status(201)
     .json({
       success: true,
       message: "User registered successfully",
+      User: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        fullname: user.fullname,
+      }
       // user: userResponse,
-    })
+    }).cookie("access_token", `Bearer ${accestoken}`, {
+          expires: new Date(Date.now() + 8 * 3600000),
+          httpOnly: true, // cookie will be removed after 8 hours
+        })
+        .cookie("refresh_token", `Bearer ${refreshtoken}`, 
+          {
+          expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
+          httpOnly: true,
+        })
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({
@@ -70,7 +85,7 @@ export const loginUser = async (req, res) => {
    
     const accestoken = await user.generateAccessToken();
     const refreshtoken =  await user.generateRefreshToken();
-    console.log(refreshtoken, accestoken);
+    // console.log(refreshtoken, accestoken);
     
     return res
     .status(200)
