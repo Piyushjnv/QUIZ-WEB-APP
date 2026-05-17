@@ -15,6 +15,7 @@ export const registerUser = async (req, res, next) => {
         success: false,
         message: "User with this username or email already exists",
       });
+   
     }
 
     // const refreshToken = User.generateRefreshToken();
