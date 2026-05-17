@@ -8,6 +8,10 @@ const sendQuestions = async (req, res) => {
   { $sample: { size: 1 } }
 ]);
         // console.log(questions[0], "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
         
 
         return res.status(200)
@@ -25,6 +29,8 @@ const sendQuestions = async (req, res) => {
                 }
             });
     } catch (error) {
+        console.log('error', error);
+        
         return res.status(500)
             .json({
                 success: false,
