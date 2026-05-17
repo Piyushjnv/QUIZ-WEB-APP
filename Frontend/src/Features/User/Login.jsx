@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import Api from '../../API/Api.js'
+import Api from '../../API/Api'
 import {Navigate, useNavigate} from "react-router-dom"
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../API/Api.js";
+import API from "../API/Api";
 import { useState, useEffect, useId } from "react";
 import axios from "axios";
 import DisplayQuestion from "./DisplayQuestion";
@@ -19,8 +19,8 @@ function Q_attempt() {
   };
 
    const correctOption = questions.correctOption;
-   console.log("!selectedoption = ",!selectedoption);
-   console.log("!selectedoption = ", selectedoption);
+  //  console.log("!selectedoption = ",!selectedoption);
+  //  console.log("!selectedoption = ", selectedoption);
   //  console.log("after option change  !submitted || !selectedoption ==", !submitted || !selectedoption);
    
     const changecolor = document.getElementById(`${selectedoption}`);
@@ -32,13 +32,13 @@ function Q_attempt() {
       setScore(score + 1);
       changecolor.classList.add("bg-[#0080003b]");
       changecolor.classList.add("border-[green]");
-      console.log("correct");
+      // console.log("correct");
     } else {
       changecolor.classList.add("bg-[#fb2c36c2]");
       changecolor.classList.add("border-red");
       changecolorofcorrect.classList.add("bg-[#00800024]");
 
-      console.log("incorrect");
+      // console.log("incorrect");
     }
     setdesableOptions(true)
     setSubmitted(false);
