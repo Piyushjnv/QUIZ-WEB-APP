@@ -15,12 +15,7 @@ const addQuestions = async (req, res) => {
  
      console.log( Username,
          Question,
-         Option1,
-         Option2,
-         Option3,
-         Option4,
-         correctoption,
-         category);
+         );
      
      const Questions = await addQuestion.create({
      Username,

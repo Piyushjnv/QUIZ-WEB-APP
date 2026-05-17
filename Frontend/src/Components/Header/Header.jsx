@@ -9,7 +9,10 @@ console.log("header jsx");
 const x = 0 
 const navigte = useNavigate()
 // var user
+if(localStorage.getItem("login") === 'true'){
+
   const user = JSON.parse(localStorage.getItem('user')).fullname
+}
 // useEffect(()=> {
 //   try {
 //     if(localStorage.getItem("login") === 'true' ){

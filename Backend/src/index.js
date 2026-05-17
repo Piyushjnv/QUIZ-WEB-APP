@@ -14,6 +14,8 @@ connectdb()
             app.on("error", (error) => {
                 console.error("Error starting the server:", error);
             });
+            console.log('DATA BASE CONNECT');
+            
        })
     .catch((error) => {
         console.log(error, "Error connecting to the database");
