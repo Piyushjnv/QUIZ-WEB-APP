@@ -8,26 +8,12 @@ function Header() {
 console.log("header jsx");
 const x = 0 
 const navigte = useNavigate()
-// var user
+var user
 if(localStorage.getItem("login") === 'true'){
-
-  const user = JSON.parse(localStorage.getItem('user')).fullname
+   user = JSON.parse(localStorage.getItem('user')).fullname
+}else{
+  user = null
 }
-// useEffect(()=> {
-//   try {
-//     if(localStorage.getItem("login") === 'true' ){
-//      user = JSON.parse(localStorage.getItem('user')).fullname
-//       navigte("/user")
-//     }
-//   } catch (error) {
-//     console.log(error);
-    
-//   }
-//   console.log("you areat user ");
-  
-
-// },[x])
-// const x = 0
 
   return (
     <div className=' w-full h-30 relative flex flex-row bg-gray-700'>

@@ -55,7 +55,7 @@ function Q_add() {
 
   return (
     <div className="md:max-w-8/10 mx-auto p-5 w-full ">
-      <div className=" border p-4 rounded-lg shadow-md bg-white text-2xl">
+      <div className=" border p-4 rounded-lg shadow-md  text-2xl">
        
         <div className="flex flex-col box-border ">
           <input
@@ -122,7 +122,7 @@ function Q_add() {
 
       {/* section 2 */}
       <p className="mt-10 font-black text-xl">Correct Option</p>
-      <div className="flex border rounded-lg p-5  max-[415px]:justify-between bg-white shadow-md mb-10">
+      <div className="flex border rounded-lg p-5  max-[415px]:justify-between shadow-md mb-10">
         {/* // Radio buttons to select the correct answer */}
         <input
           type="radio"
