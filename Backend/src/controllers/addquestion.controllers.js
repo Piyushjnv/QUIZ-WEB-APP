@@ -16,7 +16,19 @@ const addQuestions = async (req, res) => {
      console.log( Username,
          Question,
          );
-     
+
+       if([ Username, Question , Option1,Option2,
+         Option3,
+         Option4,
+         correctoption,
+         category,].some((data)=> data?.trim() === "")){
+      // console.log('empty feilds');
+      
+        return res.status(408).json({
+        success: false,
+        message: "* All feilds are mendatory ",
+      });
+    }
      const Questions = await addQuestion.create({
      Username,
       Question,
