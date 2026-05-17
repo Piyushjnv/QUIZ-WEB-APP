@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../API/API";
+import API from "../API/Api.js";
 import { useState, useEffect, useId } from "react";
 import axios from "axios";
 import DisplayQuestion from "./DisplayQuestion";
