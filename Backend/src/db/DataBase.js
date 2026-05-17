@@ -5,7 +5,7 @@ const clientOptions = { serverApi: { version: '1', strict: true, deprecationErro
 
 const connectdb = async ( ) =>{
     try {
-        const connectionInstance = await moongose.connect(`${process.env.MONGODB_URL}/${ DB_Name }`)
+        const connectionInstance = await moongose.connect(`${process.env.MONGODB_URL}`)
         console.log('db connect ');
         
             // await moongose.connection.db.admin().command({ ping: 1 });
