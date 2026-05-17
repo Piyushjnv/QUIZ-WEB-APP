@@ -87,6 +87,15 @@ export const loginUser = async (req, res) => {
     const refreshtoken =  await user.generateRefreshToken();
     // console.log(refreshtoken, accestoken);
     
+    res.cookie("access_token", `Bearer ${accestoken}`, {
+          expires: new Date(Date.now() + 8 * 3600000),
+          httpOnly: true, // cookie will be removed after 8 hours
+        })
+        res.cookie("refresh_token", `Bearer ${refreshtoken}`, 
+          {
+          expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
+          httpOnly: true,
+        })
     return res
     .status(200)
     .json({
@@ -99,15 +108,7 @@ export const loginUser = async (req, res) => {
         fullname: user.fullname,
         // avatar: user.avatar
       }})
-    .cookie("access_token", `Bearer ${accestoken}`, {
-          expires: new Date(Date.now() + 8 * 3600000),
-          httpOnly: true, // cookie will be removed after 8 hours
-        })
-        .cookie("refresh_token", `Bearer ${refreshtoken}`, 
-          {
-          expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
-          httpOnly: true,
-        })
+   
    
   }
   catch (error) {
