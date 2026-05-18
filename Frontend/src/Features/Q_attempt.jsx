@@ -3,6 +3,9 @@ import API from "../API/Api";
 import { useState, useEffect, useId } from "react";
 import axios from "axios";
 import DisplayQuestion from "./DisplayQuestion";
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-JM3Z9CLVYP');
 
 function Q_attempt() {
   const [questions, setQuestions] = useState([]);
@@ -68,7 +71,11 @@ function Q_attempt() {
   const prev = () => {
     console.log("i am prev");
   };
+ // Replace with your GA4 measurement ID
 
+ useEffect(() => {
+     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+   }, []);
   useEffect(() => {
     const fetchQuestions = async () => {
       try {

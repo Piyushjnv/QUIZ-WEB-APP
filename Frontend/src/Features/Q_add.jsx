@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import ReactGA from 'react-ga4';
 import Api from "../API/Api";
+
+ReactGA.initialize('G-JM3Z9CLVYP'); // Replace with your GA4 measurement ID
 
 function Q_add() {
   const [islogin , setlogin] = useState()
@@ -24,6 +27,10 @@ function Q_add() {
     setQuestion((prev) => ({ ...prev, [name]: value }));
   };
 
+ 
+ useEffect(() => {
+     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+   }, []);
   const Onsubmit = () => {
     try {
       console.log(question);
