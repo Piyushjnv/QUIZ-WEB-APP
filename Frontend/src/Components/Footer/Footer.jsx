@@ -1,6 +1,6 @@
 import React from 'react'
 import Logoutuser from '../../Features/User/Logout.user'
-import redirect from '../../../public/share.png'
+import redirect from '/share.png'
 function Footer() {
  
   return (
