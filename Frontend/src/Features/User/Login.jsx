@@ -6,6 +6,7 @@ import {Navigate, useNavigate} from "react-router-dom"
 
 export function LoginForm() {
     const navigate = useNavigate()
+    const [message , setmessage] = useState()
     const [isdesable, setisdesable] = useState(false)
  const [formData, setFormData] = useState({
         username: "",
@@ -26,17 +27,24 @@ export function LoginForm() {
                 .post(`user/login`, formData)
                 .then((response) => {
                     const {user} = response.data
-                    if(user) {
+                    if(response.data. success) {
+                        
                         localStorage.setItem("user", JSON.stringify(user))
                         localStorage.setItem("login", true)
                         navigate("/user")
                     }
-                    console.log(response.data, user.username, user.email)
+                    // console.log(response.data, user.username, user.email)
                 })
+                .catch ((err)=>{
+                        console.log("err responce",err.response)
+                        setmessage(err.response.data.message)
+                    }
+                )
         } catch (error) {
             console.error("Error occurred while registering user:", error)
         }
     }
+    
     return (
         <div className=" dark:bg-gray-800 dark:text-white ">
             <form onSubmit={handleSubmit} className=' clas_inp ' >
@@ -66,11 +74,11 @@ export function LoginForm() {
                 <button 
                 type='submit' 
                
-                desabled = {isdesable}
-                className='bg-blue-500 block h-10 w-24 mb-3 border-2 m-auto text-white  rounded-2xl hover:bg-blue-600 hover:text-1.5xl '
+                desabled = {formData.username.length == 0 || formData.password.length == 0}
+                className='bg-blue-500 block h-10 w-24 mb-3 border-2 m-auto text-white  rounded-2xl cursor-pointer hover:bg-blue-600 hover:text-1.5xl '
                 > Submit
                 </button>
-
+             <p className=" text-red-600 ">{message}</p>
             </form>
 
 

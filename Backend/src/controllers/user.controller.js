@@ -83,7 +83,7 @@ export const loginUser = async (req, res) => {
     }
     const user = await User.findOne({ username });
     if (!user) {
-      return res.status(201).json({
+      return res.status(408).json({
         success: false,
         message: "Invalid credentials",
       });
@@ -93,7 +93,7 @@ export const loginUser = async (req, res) => {
     const isPasswordValid = await user.comparePassword(password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({
+      return res.status(408).json({
         success: false,
         message: "Invalid credentials",
       });
