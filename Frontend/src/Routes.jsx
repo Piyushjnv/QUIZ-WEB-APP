@@ -30,7 +30,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path:"/qattempt",
-                element: <Q_attempt/>
+                element: <AllQuestion />
             },
              {
                 path:"/user",
