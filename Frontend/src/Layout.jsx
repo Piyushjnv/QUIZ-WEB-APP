@@ -11,6 +11,8 @@ function Layout() {
           navigate('/user')
           // console.log('tudnfjndf');
           
+       }else{
+        localStorage.setItem('login', false)
        }
     },[]
   )
