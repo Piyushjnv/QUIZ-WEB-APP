@@ -1,5 +1,6 @@
 import React from 'react'
 import Logoutuser from '../../Features/User/Logout.user'
+import profile from '/profle.png'
 // profile image 
 // name email , 
 
@@ -11,8 +12,8 @@ function Profile() {
 
   return (
     <div className='flex flex-col max-w-xl md:max-w-2xl rounded-lg items-center dark:bg-gray-600 min-h-100 shadow-lg  mt-10 mx-auto justify-center '>
-        <div className=' w-20 h-20 border  mb-10 dark:border-white bg-white rounded-full'>
-            <img src="" alt="" />
+        <div className=' w-20 h-20 border  mb-10 dark:border-white bg-white rounded-full overflow-hidden'>
+            <img src={profile} width={80} height={80} alt="Profile" />
         </div>
         <div className=' font-bold dark:text-white '>
             <div className=' border-2 rounded-lg p-3 mb-4 dark:border-[#66fa66] border-[green] '>{name}</div>

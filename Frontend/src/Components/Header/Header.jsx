@@ -3,6 +3,7 @@ import Darkmode from '../../Features/Darkmode'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Profile from './Profile'
+import profile from '/profle.png'
 import { useNavigate , NavLink } from 'react-router-dom'
 function Header() {
 // console.log("header jsx");
@@ -45,7 +46,7 @@ user}`:" And Welcome"}
                     </button>
                        </Link>
                 </div> : <Link  to={"/user/profile"}> 
-                      <div className='w-10 h-10 border-2 rounded-full bg-white '></div>
+                      <div className='w-10 h-10 border-2 rounded-full bg-white overflow-hidden'><img src={profile} width={42} height={42} alt="profile" /></div>
                 </Link>}
             
                 <div className=' absolute right-0 bottom-10 '>

@@ -72,22 +72,24 @@ export const loginUser = async (req, res) => {
 
   try {
     const { username, password } = req.body;
+    const email = username
     // Find user by username
+    // console.log('empty feilds', username, password);
       if([ username,  password].some((data)=> data?.trim() === "")){
-      // console.log('empty feilds');
       
         return res.status(408).json({
         success: false,
         message: "* All feilds are mendatory ",
       });
     }
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ $or: [{ username }, { email }] });
     if (!user) {
       return res.status(408).json({
         success: false,
         message: "Invalid credentials",
       });
     }
+// console.log('User found:', user);
 
     // Check password
     const isPasswordValid = await user.comparePassword(password);
@@ -123,6 +125,7 @@ export const loginUser = async (req, res) => {
         username: user.username,
         email: user.email,
         fullname: user.fullname,
+        role: user.role,
         // avatar: user.avatar
       }})
    

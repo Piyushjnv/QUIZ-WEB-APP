@@ -25,12 +25,12 @@ export function LoginForm() {
             setisdesable(true)
             Api
                 .post(`user/login`, formData)
-                .then((response) => {
-                    const {user} = response.data
-                    if(response.data. success) {
+                .then( async (response) => {
+                    // const {user} = await response.data
+                    if(await response.data.success) {
                         
-                        localStorage.setItem("user", JSON.stringify(user))
-                        localStorage.setItem("login", true)
+                       await localStorage.setItem("user", JSON.stringify(response.data.user))
+                       await localStorage.setItem("login", true)
                         navigate("/user")
                     }
                     // console.log(response.data, user.username, user.email)
