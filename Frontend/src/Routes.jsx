@@ -7,8 +7,8 @@ import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import Profile from './Components/Header/Profile'
 import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
-
-
+// import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
+import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English} from "./Components/QuestionByCAtegory"
 
 const Routes = createBrowserRouter([
     {
@@ -19,11 +19,7 @@ const Routes = createBrowserRouter([
                 index : true,
                 element: <Index />
             },
-            {
-                path: "/qgen",
-                element: <QuizGenerator />
-
-            },
+           
             {
                 path:"/about",
                 element: <h1>About</h1>
@@ -43,6 +39,35 @@ const Routes = createBrowserRouter([
                         index:true,
                         element: <Index />
 
+                    },
+                    {
+                        path:"/user/question",
+                        children:[
+                            {
+                                path:"/user/question/history",
+                                element: <HistoryQuetion />
+                            },
+                            {
+                                path:"/user/question/computer",
+                                element: <Computer />
+                            },
+                            {
+                                path:"/user/question/polity",
+                                element: <Polity />
+                            },
+                            {
+                                path:"/user/question/geography",
+                                element: <Geography />
+                            },
+                            {
+                                path:"/user/question/english",
+                                element: <English />
+                            }
+                        ]
+                    },
+                    {
+                        path:"/user/questions",
+                        element: <AllQuestion />
                     },
                     {
                         path:"/user/qadd",

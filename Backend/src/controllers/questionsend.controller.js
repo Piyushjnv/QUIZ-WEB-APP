@@ -1,13 +1,13 @@
 import addQuestion from "../models/question.models.js";
 
-const sendQuestions = async (req, res) => {
+export const sendQuestions = async (req, res) => {
     try {
         // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
         const questions = await addQuestion.aggregate([
-  { $sample: { size: 1 } }
+  { $sample: { size: 25 } }
 ]);
-        // console.log(questions[0], "i am questions in controller");
+        // console.log(questions.length, "i am questions in controller");
          if(questions.length === 0) {
             return res.status(404).json({ success: false, message: "No questions found" });
         }
@@ -17,16 +17,17 @@ const sendQuestions = async (req, res) => {
         return res.status(200)
             .json({
                 success: true,
-                data: { 
-                    username: questions[0].Username,
-                    question: questions[0].Question,
-                    option1: questions[0].Option1,
-                    option2: questions[0].Option2,
-                    option3: questions[0].Option3,
-                    option4: questions[0].Option4,
-                    correctOption: questions[0].correctoption,
-                    category: questions[0].category
-                }
+                 data:  questions
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
             });
     } catch (error) {
         console.log('error', error);
@@ -38,4 +39,213 @@ const sendQuestions = async (req, res) => {
             });
     }
 }
-export default sendQuestions
+export const English = async (req, res) =>{
+    try {
+        // console.log( "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+            { 
+    $match: { category : "english" } 
+  },
+  { $sample: { size: 25 } }
+]);
+        // console.log(questions, "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        
+
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}
+export const Computer = async (req, res) => {
+    try {
+        // console.log( "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+            { 
+    $match: { category : "computer" } 
+  },
+  { $sample: { size: 5 } }
+]);
+        // console.log(questions, "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        
+
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}
+export const History = async (req, res) => {
+    try {
+        // console.log( "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+            { 
+    $match: { category : "history" } 
+  },
+  { $sample: { size: 25 } }
+]);
+        // console.log(questions, "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        
+
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}
+export const Geography = async (req, res) =>{
+    try {
+        // console.log( "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+            { 
+    $match: { category : "Geography" } 
+  },
+  { $sample: { size: 25 } }
+]);
+        // console.log(questions, "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        
+
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}
+export const Polity = async (req, res) => {
+    try {
+        // console.log( "Hello, world!");
+        // const questions = await addQuestion.findOne()
+        const questions = await addQuestion.aggregate([
+            { 
+    $match: { category : "Polity" } 
+  },
+  { $sample: { size: 25 } }
+]);
+        // console.log(questions, "i am questions in controller");
+         if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        
+
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
+                // data: { 
+                //     username: questions[0].Username,
+                //     question: questions[0].Question,
+                //     option1: questions[0].Option1,
+                //     option2: questions[0].Option2,
+                //     option3: questions[0].Option3,
+                //     option4: questions[0].Option4,
+                //     correctOption: questions[0].correctoption,
+                //     category: questions[0].category
+                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}

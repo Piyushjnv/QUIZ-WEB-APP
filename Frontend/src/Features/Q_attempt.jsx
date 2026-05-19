@@ -7,8 +7,8 @@ import ReactGA from 'react-ga4';
 
 ReactGA.initialize('G-JM3Z9CLVYP');
 
-function Q_attempt() {
-  const [questions, setQuestions] = useState([]);
+function Q_attempt({questions , changeQuestion}) {
+  // const [questions, setQuestions] = useState([]);
   const [questionsno, setQuestionsno] = useState(1);
   const [score, setScore] = useState(0);
   const [nextclicked, setNextClicked] = useState(true);
@@ -21,17 +21,18 @@ function Q_attempt() {
     setSelectedOption(incomingData);
   };
 
-   const correctOption = questions.correctOption;
+   var correctOption = questions.correctoption;
   //  console.log("!selectedoption = ",!selectedoption);
+  //  console.log("question = ",String(selectedoption ) ===  correctOption);
   //  console.log("!selectedoption = ", selectedoption);
   //  console.log("after option change  !submitted || !selectedoption ==", !submitted || !selectedoption);
    
-    const changecolor = document.getElementById(`${selectedoption}`);
-    const changecolorofcorrect = document.getElementById(`${correctOption}`);
+    var changecolor = document.getElementById(`${selectedoption}`);
+    var changecolorofcorrect = document.getElementById(`${correctOption}`);
   const submitq = () => {
   //  setchangecolor(document.getElementById(`${selectedoption}`))
     // console.log("submitted run ",submitted);
-    if (selectedoption == questions.correctOption ) {
+    if (String(selectedoption ) ===  correctOption ) {
       setScore(score + 1);
       changecolor.classList.add("bg-[#0080003b]");
       changecolor.classList.add("border-[green]");
@@ -51,7 +52,7 @@ function Q_attempt() {
   const next = () => {
     // console.log("i am next");
 
-    if (selectedoption == questions.correctOption) {
+    if (String(selectedoption ) ===  correctOption) {
       changecolor.classList.remove("bg-[#0080003b]");
       changecolor.classList.remove("border-[green]");
       // console.log("correct");
@@ -64,31 +65,35 @@ function Q_attempt() {
     }
     setdesableOptions(false)
     setSelectedOption(null)
+    changeQuestion(questionsno + 1);
     setQuestionsno(questionsno + 1);
     setSubmitted(true);
     setNextClicked(true);
+    changecolor = null;
+    changecolorofcorrect = null;
+    correctOption = null;
   };
   const prev = () => {
-    console.log("i am prev");
+    // console.log("i am prev");
   };
  // Replace with your GA4 measurement ID
 
  useEffect(() => {
      ReactGA.send({ hitType: "pageview", page: window.location.pathname });
    }, []);
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await API.get("user/qsend");
-        setQuestions(response.data.data);
-        // setNextClicked(false);
-      } catch (error) {
-        console.error("Error fetching questions:", error);
-      }
-    };
-    fetchQuestions();
-    // console.log(questions, "i am questions in useeffect");
-  }, [questionsno]);
+  // useEffect(() => {
+  //   const fetchQuestions = async () => {
+  //     try {
+  //       const response = await API.get("user/qsend");
+  //       setQuestions(response.data.data);
+  //       // setNextClicked(false);
+  //     } catch (error) {
+  //       console.error("Error fetching questions:", error);
+  //     }
+  //   };
+  //   fetchQuestions();
+  //   // console.log(questions, "i am questions in useeffect");
+  // }, [questionsno]);
 
   // console.log(questions);
 

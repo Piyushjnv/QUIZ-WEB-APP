@@ -5,216 +5,256 @@ import Api from '../API/Api';
 function Questionaddinbulk() {
 
 const questions = [
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबर के निम्नलिखित विजय अभियानों को कालानुक्रम के अनुसार रखिए: (A) सिंध, (B) खानदेश, (C) बंगाल, (D) काबुल",
-    Option1: "C, D, A, B",
-    Option2: "C, A, D, B",
-    Option3: "A, B, C, D",
-    Option4: "D, C, A, B",
-    correctoption: "1",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "गुजरात पर अपनी विजय के उपलक्ष्य में अकबर ने किसका निर्माण कराया था?",
-    Option1: "इबादत खाना",
-    Option2: "बुलंद दरवाजा",
-    Option3: "आगरा का किला",
-    Option4: "सिकंदरा मकबरा",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबर ने किस वर्ष कश्मीर को मुगल साम्राज्य में मिला लिया था?",
-    Option1: "1582",
-    Option2: "1585",
-    Option3: "1586",
-    Option4: "1591",
-    correctoption: "3",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबर के नवरत्नों के बारे में इनमें से कौन सा सही ढंग से मेल नहीं खाता है?",
-    Option1: "अबुल फजल - वह अकबर के वजीर और अकबरनामा के लेखक थे",
-    Option2: "राजा मानसिंह - अकबर के वित्त मंत्री थे",
-    Option3: "अब्दुल रहीम खान-ए-खाना - वह बैरम खान के पुत्र और कवि थे",
-    Option4: "तानसेन - अकबर के दरबारी संगीतकार थे",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "निम्नलिखित में से कौन सा सम्राट अकबर के दरबार के नवरत्नों में से एक नहीं था?",
-    Option1: "उस्मान अली खान",
-    Option2: "अबुल फजल",
-    Option3: "फकीर अजीउद्दीन",
-    Option4: "राजा टोडरमल",
-    correctoption: "1",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "सम्राट अकबर के दरबार में टोडरमल कौन थे?",
-    Option1: "सैन्य कमांडर",
-    Option2: "वित्त मंत्री",
-    Option3: "प्रधान मंत्री",
-    Option4: "धार्मिक सलाहकार",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबर के दरबारी सदस्य बीरबल का वास्तविक नाम क्या था?",
-    Option1: "रामतनु पांडे",
-    Option2: "महेश दास",
-    Option3: "जानी बेग",
-    Option4: "सुरजन राय",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबरनामा के द्वितीय खंड में क्या वर्णित है?",
-    Option1: "अकबर के पूर्वज",
-    Option2: "अकबर के शासनकाल की घटनाएं",
-    Option3: "अकबर का प्रशासन और राजस्व",
-    Option4: "मुगल कालीन कला और संस्कृति",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबरनामा के कौन से खंड को 'आईने-अकबरी' कहा जाता है?",
-    Option1: "प्रथम खंड",
-    Option2: "द्वितीय खंड",
-    Option3: "तृतीय खंड",
-    Option4: "चतुर्थ खंड",
-    correctoption: "3",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अबुल फजल अलामी द्वारा आईने-अकबरी में वर्णित 'गज' को कितने हिस्सों (तसुज) में विभाजित किया गया था?",
-    Option1: "दो भाग",
-    Option2: "तीन भाग",
-    Option3: "चार भाग",
-    Option4: "पाँच भाग",
-    correctoption: "1",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अबुल फजल द्वारा अकबरनामा को कितने समय में पूरा किया गया था?",
-    Option1: "5 वर्ष",
-    Option2: "7 वर्ष",
-    Option3: "9 वर्ष",
-    Option4: "12 वर्ष",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "'तबकात-ए-अकबरी', जिसे कभी-कभी अबुल फजल के अकबरनामा से भी अधिक विश्वसनीय माना जाता है, किसके द्वारा लिखा गया है?",
-    Option1: "बदायुनी",
-    Option2: "निजामुद्दीन अहमद",
-    Option3: "शेख मुबारक",
-    Option4: "वीर सिंह बुंदेला",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "मियां तानसेन के संदर्भ में कौन सा कथन सही है?",
-    Option1: "सम्राट अकबर द्वारा इन्हें तानसेन की उपाधि दी गई थी",
-    Option2: "उन्हें केवल ध्रुपदों की रचना के लिए जाना जाता है",
-    Option3: "अकबर ने उन्हें 'मियां' की उपाधि दी थी",
-    Option4: "वे मूल रूप से दिल्ली के निवासी थे",
-    correctoption: "3",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "तानसेन, जो अकबर के नवरत्नों में शामिल थे, किस संगीत वाद्य यंत्र को बजाने के लिए जाने जाते थे?",
-    Option1: "सरोद",
-    Option2: "सितार",
-    Option3: "रबाब",
-    Option4: "वीणा",
-    correctoption: "3",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "तानसेन और बैजू बावरा ने किस संगीत विद्यापीठ से शिक्षा प्राप्त की थी?",
-    Option1: "वाराणसी",
-    Option2: "ग्वालियर",
-    Option3: "जयपुर",
-    Option4: "आगरा",
-    correctoption: "2",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "तानसेन के गुरु कौन थे जिन्होंने उनकी संगीत प्रतिभा को विकसित करने में मदद की?",
-    Option1: "स्वामी हरिदास",
-    Option2: "बहादुर शाह",
-    Option3: "बुरहान उल मुल्क",
-    Option4: "शेख मुबारक",
-    correctoption: "1",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "प्रतिवर्ष तानसेन संगीत समारोह कहाँ आयोजित किया जाता है?",
-    Option1: "भोपाल",
-    Option2: "इन्दौर",
-    Option3: "ग्वालियर",
-    Option4: "जबलपुर",
-    correctoption: "3",
-    category: "static"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "अकबर के समकालीन महाराणा प्रताप निम्नलिखित में से किस राज्य के शासक थे?",
-    Option1: "मारवाड़",
-    Option2: "आमेर",
-    Option3: "मेवाड़",
-    Option4: "रणथंभौर",
-    correctoption: "3",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "हल्दीघाटी के युद्ध में महाराणा प्रताप के पक्ष से लड़ने वाले एकमात्र मुस्लिम प्रमुख सेनापति कौन थे?",
-    Option1: "हकीम खाँ सूर",
-    Option2: "दाऊद खान",
-    Option3: "सुल्तान खान",
-    Option4: "बहलोल खान",
-    correctoption: "1",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "निम्नलिखित राजपूत सरदारों में से कौन हल्दीघाटी के युद्ध में राणा प्रताप के पक्ष में लड़े थे? (1) राम सिंह तंवर (राम शाह), (2) बीदा झाला, (3) रावत कृष्णदास चुंडावत, (4) माधव सिंह कछवाहा",
-    Option1: "केवल 1 और 2",
-    Option2: "केवल 2 और 3",
-    Option3: "1, 2, 3 और 4",
-    Option4: "1, 2 और 3",
-    correctoption: "4",
-    category: "history"
-  },
-  {
-    Username: "69ea5ce6b7e89e3b595a60dc",
-    Question: "महाराणा प्रताप की मृत्यु के पश्चात निम्न में से कौन मेवाड़ का शासक बना?",
-    Option1: "अमर सिंह",
-    Option2: "जगमल",
-    Option3: "उदय सिंह",
-    Option4: "मानसिंह",
-    correctoption: "1",
-    category: "history"
-  }
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Who was the founder of the Pala Dynasty in Bengal?",
+"Option1": "Gopala",
+"Option2": "Dharmapala",
+"Option3": "Devapala",
+"Option4": "Mahipala",
+"correctoption": "1",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Which of the following rulers were Brahmins who gave up their traditional professions and established a kingdom in Rajasthan?",
+"Option1": "Dantidurga",
+"Option2": "Harichandra",
+"Option3": "Nagabhata I",
+"Option4": "Dharmapala",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Which Pratihara ruler is regarded as the real founder of their empire?",
+"Option1": "Nagabhata I",
+"Option2": "Devapala",
+"Option3": "Mihir Bhoj",
+"Option4": "Gopala III",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "What actions did Vijayalaya Chola take after capturing the Kaveri delta?",
+"Option1": "He established the town of Thanjavur",
+"Option2": "He built a temple for goddess Nishumbhasudini",
+"Option3": "Both 1 and 2",
+"Option4": "None of the above",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "What was a major challenge for agriculture in the Chola kingdom apart from the rocky land?",
+"Option1": "Lack of seeds",
+"Option2": "Lack of labor",
+"Option3": "Lack of irrigation water",
+"Option4": "Poor pest management",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Who among the following is considered the most powerful Chola ruler?",
+"Option1": "Dantidurga",
+"Option2": "Harshavardhana",
+"Option3": "Veerarajendra Chola",
+"Option4": "Rajaraja I",
+"correctoption": "4",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Who among the following Chola emperors constructed the grand temple at Gangaikonda Cholapuram?",
+"Option1": "Rajaraja I",
+"Option2": "Rajendra Chola I",
+"Option3": "Rajadhiraja Chola",
+"Option4": "Kulothunga Chola I",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Consider the following statements regarding the post-Chalukya period: 1) The Kakatiyas ruling from Manyakheta were the primary successors to the Later Chalukyas in the Western Deccan. 2) The Hoysalas based in Devagiri were the sole dynasty responsible for the complete overthrow of the Later Chalukyas across all regions. Which statement(s) is/are correct?",
+"Option1": "Only 1",
+"Option2": "Only 2",
+"Option3": "Both 1 and 2",
+"Option4": "Neither 1 nor 2",
+"correctoption": "4",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "What does the term 'Ur' refer to in the context of early South Indian villages?",
+"Option1": "A type of tax",
+"Option2": "A temple priest",
+"Option3": "A village assembly of common people",
+"Option4": "A military commander",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "What was the term used for land revenue in the Chola Kingdom?",
+"Option1": "Vetti",
+"Option2": "Kadamai",
+"Option3": "Vishti",
+"Option4": "Toll Tax",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "The Chola dynasty is known for its naval expeditions to which region?",
+"Option1": "Arabian Peninsula",
+"Option2": "South East Asia",
+"Option3": "Central Asia",
+"Option4": "East Africa",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "The Chola inscriptions at Uttramerur are primarily concerned with:",
+"Option1": "Maritime trade",
+"Option2": "Military conquest",
+"Option3": "Temple rituals",
+"Option4": "Village administration",
+"correctoption": "4",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "The Virupaksha Temple at Hampi is dedicated to which deity?",
+"Option1": "Lord Shiva",
+"Option2": "Lord Vishnu",
+"Option3": "Lord Brahma",
+"Option4": "Goddess Durga",
+"correctoption": "1",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "The term 'Vesara' refers to an architectural style that developed in which Indian region, combining elements of North and South Indian temple designs?",
+"Option1": "North India",
+"Option2": "Deccan",
+"Option3": "East India",
+"Option4": "West India",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Consider the following statements about temple architecture: 1) Dravida temples are enclosed within a compound wall, a feature typically absent in Nagara temples. 2) The shape of the central temple tower in Dravida style (Vimana) is similar to the curving Shikhara of the Nagara style. Which statement(s) is/are correct?",
+"Option1": "Statement 1 is correct, but 2 is incorrect",
+"Option2": "Statement 2 is correct, but 1 is incorrect",
+"Option3": "Both statements are correct",
+"Option4": "Both statements are incorrect",
+"correctoption": "1",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "The temples of Khajuraho in Madhya Pradesh, noted for ornate shikharas and erotic sculptures, are associated with which architectural style?",
+"Option1": "Dravida Style",
+"Option2": "Vesara Style",
+"Option3": "Nagara Style",
+"Option4": "Kalinga Style",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Consider the following statements: 1) After Harsha's death, the Rajputs rose to prominence in Northern Indian politics. 2) The Rajputs maintained a strong unity which helped them resist foreign invasions effectively. Which statement(s) is/are correct?",
+"Option1": "Only 1",
+"Option2": "Only 2",
+"Option3": "Both 1 and 2",
+"Option4": "Neither 1 nor 2",
+"correctoption": "1",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Consider the following statements regarding Ajanta caves: Assertion (A): Ajanta is the only surviving site that contains paintings from both the 1st century BC and the 5th century AD. Reason (R): Ajanta has Chaitya caves from the early phase and only Vihara caves from the later phase.",
+"Option1": "Both A and R are true and R is the correct explanation of A",
+"Option2": "Both A and R are true but R is not the correct explanation of A",
+"Option3": "A is true but R is false",
+"Option4": "A is false but R is true",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Which among the following works was authored by Varahamihira?",
+"Option1": "Mricchakatika",
+"Option2": "Sushruta Samhita",
+"Option3": "Brihat Samhita",
+"Option4": "Dashakumaracharita",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Which among the following statements is NOT true about Kanishka?",
+"Option1": "He patronized Vasumitra, Ashvaghosa, and Nagarjuna",
+"Option2": "He introduced the purest form of gold coins",
+"Option3": "He patronized the Fourth Buddhist Council",
+"Option4": "Vasudeva was his son",
+"correctoption": "4",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Who was the last ruler of the Shunga Dynasty?",
+"Option1": "Vasudeva",
+"Option2": "Pushyamitra Shunga",
+"Option3": "Devabhuti",
+"Option4": "Agnimitra",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Identify the correct pairs from the given options: 1) Kalibangan - Fire altars & Ploughed field, 2) Megasthenes - Arthashastra, 3) Chalcolithic culture - Use of both copper and stone.",
+"Option1": "1 and 2 only",
+"Option2": "2 and 3 only",
+"Option3": "1 and 3 only",
+"Option4": "1, 2 and 3",
+"correctoption": "3",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Mahavira Jain was born in a royal family near which ancient city?",
+"Option1": "Taxila",
+"Option2": "Vaishali",
+"Option3": "Ujjain",
+"Option4": "Pataliputra",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Which Indian ruler is famously known as the 'Napoleon of India'?",
+"Option1": "Ashoka",
+"Option2": "Samudragupta",
+"Option3": "Harshavardhana",
+"Option4": "Chandragupta Maurya",
+"correctoption": "2",
+"category": "history"
+},
+{
+"Username": "69ea5ce6b7e89e3b595a60dc",
+"Question": "Consider the following statements: 1) The oldest surviving structural temples from the Gupta period were primarily built using sandstone. 2) The earliest known examples of the Rath style of temples are found in Madhya Pradesh. Which statement(s) is/are correct?",
+"Option1": "Only 1",
+"Option2": "Only 2",
+"Option3": "Both 1 and 2",
+"Option4": "Neither 1 nor 2",
+"correctoption": "1",
+"category": "history"
+}
 ]
 const Onsubmit1 = async (question) => {
    try {
@@ -261,7 +301,7 @@ Api.post("user/qadd", question).then(
           category: question1.category
         }
     
-         console.log("run button ", data);
+        //  console.log("run button ", data);
         Onsubmit1(data)
     });
   };

@@ -9,7 +9,7 @@ function Layout() {
     ()=> {
        if( localStorage.getItem('login')){
           navigate('/user')
-          console.log('tudnfjndf');
+          // console.log('tudnfjndf');
           
        }
     },[]
