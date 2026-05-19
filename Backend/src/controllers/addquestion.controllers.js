@@ -13,9 +13,9 @@ const addQuestions = async (req, res) => {
          category,
      } = req.body;
  
-     console.log( Username,
-         Question,
-         );
+    //  console.log( Username,
+    //      Question,
+    //      );
 
        if([ Username, Question , Option1,Option2,
          Option3,
@@ -29,7 +29,15 @@ const addQuestions = async (req, res) => {
         message: "* All feilds are mendatory ",
       });
     }
-     const Questions = await addQuestion.create({
+    const existingQuestion = await addQuestion.findOne({ Question: Question });
+    if (existingQuestion) {
+      // console.log("question already exists");
+      return res.status(409).json({
+        success: false,
+        message: "Question already exists",
+      });
+    }
+    const Questions = await addQuestion.create({
      Username,
       Question,
          Option1,
@@ -40,7 +48,7 @@ const addQuestions = async (req, res) => {
          category,
  })
  if (Question){
-    console.log("question added", Questions._id);
+    // console.log("question added", Questions._id);
     
  }
  return res.status(200)

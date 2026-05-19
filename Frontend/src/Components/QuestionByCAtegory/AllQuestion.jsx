@@ -4,7 +4,7 @@ import API from "../../API/Api";
 import { useNavigate } from "react-router-dom"
 
 function AllQuestion() {
-  
+
   const [questions, setQuestions] = useState([])
   const navigate = useNavigate()
 const [changeQuestion, setChangeQuestion] = useState()
@@ -32,7 +32,7 @@ useEffect(() => {
       }
     };
     fetchQuestions();
-    console.log(questions, "i am questions in useeffect");
+    // console.log(questions, "i am questions in useeffect");
   }, [changeQuestion]);
   
 if (!questions || questions.length === 0) {

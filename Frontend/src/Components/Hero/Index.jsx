@@ -8,7 +8,7 @@ import geography from "/geography.png";
 import polity from "/polity.png";
 import computer from "/computer.png";
 import { Link, useNavigate } from "react-router-dom";
-// import Questionaddinbulk from '../../Features/Questionaddinbulk'
+import Questionaddinbulk from '../../Features/Questionaddinbulk'
 ReactGA.initialize("G-JM3Z9CLVYP");
 function Index() {
    const navigate = useNavigate();
@@ -23,7 +23,7 @@ function Index() {
               category: "Add Question",
               action: "Clicked add question button",
             });
-            console.log("attempt quesdtion");
+            // console.log("attempt quesdtion");
           }}
           className="  "
         >
@@ -36,13 +36,16 @@ function Index() {
               category: "Question Attempt",
               action: "Clicked attempt question button",
             });
-            console.log("attempt quesdtion");
+            // console.log("attempt quesdtion");
           }}
           className=" ml-5 "
         >
           <AttemptQuiz />
         </div>
       </div>
+
+
+   
       {/* <div><Questionaddinbulk /></div> */}
       <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
         <div
@@ -64,7 +67,7 @@ function Index() {
         <div
           className="w-fit items-center "
           onClick={() => {
-            console.log('geography');
+            // console.log('geography');
             
             if (localStorage.getItem("login") === "true") {
               navigate("question/geography");

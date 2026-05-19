@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ReactGA from 'react-ga4';
 import Api from "../API/Api";
-
+import Questionaddinbulk from './Questionaddinbulk'
 ReactGA.initialize('G-JM3Z9CLVYP'); // Replace with your GA4 measurement ID
 
 function Q_add() {
@@ -62,6 +62,11 @@ function Q_add() {
 
   return (
     <div className="md:max-w-8/10 mx-auto p-5 w-full ">
+      <div className=" mb-10 mt-5">
+  {
+   JSON.parse(localStorage.getItem('user')).role === 'ADMIN' ? <Questionaddinbulk /> : ''
+  }
+</div>
       <div className=" border p-4 rounded-lg shadow-md  text-2xl">
        
         <div className="flex flex-col box-border ">

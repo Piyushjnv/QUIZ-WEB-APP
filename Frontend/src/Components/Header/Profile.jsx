@@ -5,7 +5,7 @@ import profile from '/profle.png'
 // name email , 
 
 function Profile() {
-    console.log("profile jsx");
+    // console.log("profile jsx");
     const user = JSON.parse(localStorage.getItem("user"))
     const name = user.fullname
     const email = user.email
