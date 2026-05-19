@@ -7,7 +7,7 @@ function Layout() {
   const navigate = useNavigate()
     useEffect(
     ()=> {
-       if( localStorage.getItem('login')){
+       if( localStorage.getItem('login') === 'true'){
           navigate('/user')
           // console.log('tudnfjndf');
           

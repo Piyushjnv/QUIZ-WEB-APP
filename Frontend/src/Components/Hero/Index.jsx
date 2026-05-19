@@ -51,7 +51,7 @@ function Index() {
             if (localStorage.getItem("login") === "true") {
               navigate("question/history");
             } else {
-              navigate("/qattempt");
+              navigate("/login");
             }
           }}
         >
@@ -69,7 +69,7 @@ function Index() {
             if (localStorage.getItem("login") === "true") {
               navigate("question/geography");
             } else {
-              navigate("/qattempt");
+              navigate("/login");
             }
           }}
         >
@@ -84,7 +84,7 @@ function Index() {
             if (localStorage.getItem("login") === "true") {
               navigate("question/polity");
             } else {
-              navigate("/qattempt");
+              navigate("/login");
             }
           }}
         >
@@ -99,7 +99,7 @@ function Index() {
             if (localStorage.getItem("login") === "true") {
               navigate("question/computer");
             } else {
-              navigate("/qattempt");
+              navigate("/login");
             }
           }}
         >
