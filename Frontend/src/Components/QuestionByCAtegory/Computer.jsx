@@ -15,7 +15,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
       setCurrentIndex(prevIndex => prevIndex + 1);
     } else {
       alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
-       navigate('/')
+       navigate('/user')
       // You can redirect them or show a score screen here
     }
   };
