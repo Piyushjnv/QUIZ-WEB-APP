@@ -293,7 +293,7 @@ export const Static = async (req, res) => {
 }
 export const economics = async (req, res) => {
     try {
-        console.log( "Hello, world!");
+        // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
         const questions = await addQuestion.aggregate([
             { 
