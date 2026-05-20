@@ -8,7 +8,7 @@ import Q_attempt from './Features/Q_attempt'
 import Profile from './Components/Header/Profile'
 import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 // import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
-import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English} from "./Components/QuestionByCAtegory"
+import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English, Static, Economics,Science, General} from "./Components/QuestionByCAtegory"
 
 const Routes = createBrowserRouter([
     {
@@ -62,7 +62,23 @@ const Routes = createBrowserRouter([
                             {
                                 path:"/user/question/english",
                                 element: <English />
-                            }
+                            },
+                            {
+                                path:"/user/question/static",
+                                element: <Static />
+                            },
+                            {
+                                path:"/user/question/general",
+                                element: <General />
+                            },
+                            {
+                                path:"/user/question/science",
+                                element: <Science />
+                            },
+                            {
+                                path:"/user/question/economics",
+                                element: <Economics />
+                            },
                         ]
                     },
                     {

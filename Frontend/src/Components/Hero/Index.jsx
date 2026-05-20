@@ -115,6 +115,112 @@ function Index() {
             COMPUTER
           </div>
         </div>
+        {/* <div></div> */}
+        
+         {/* <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/computer");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src={computer} alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            COMPUTER
+          </div>
+        </div> */}
+         {/* <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/computer");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src={computer} alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            COMPUTER
+          </div>
+        </div> */}
+      </div>
+      <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/static");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            STATIC
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/general");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            GENERAL
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/economics");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            ECONOMICS
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("question/science");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            SCIENCE
+          </div>
+        </div>
       </div>
     </div>
   );

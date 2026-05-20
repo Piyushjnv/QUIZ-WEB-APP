@@ -83,21 +83,7 @@ function Q_attempt({questions , changeQuestion}) {
  useEffect(() => {
      ReactGA.send({ hitType: "pageview", page: window.location.pathname });
    }, []);
-  // useEffect(() => {
-  //   const fetchQuestions = async () => {
-  //     try {
-  //       const response = await API.get("user/qsend");
-  //       setQuestions(response.data.data);
-  //       // setNextClicked(false);
-  //     } catch (error) {
-  //       console.error("Error fetching questions:", error);
-  //     }
-  //   };
-  //   fetchQuestions();
-  //   // console.log(questions, "i am questions in useeffect");
-  // }, [questionsno]);
-
-  // console.log(questions);
+  
 
   return (
     <div className=" flex flex-col relative mt-10 max-w-xl md:max-w-4xl mx-auto mb-10">
@@ -114,7 +100,7 @@ function Q_attempt({questions , changeQuestion}) {
           score : {score}
         </div>
  <div className="md:text-xl font-bold text-[#f5c518] w-fit p-2 mt-5 ml-5 bg-[#f5c51833]  text-center border-2 mb-3.5 border-gray-300 shadow-lg rounded-full ">
-          category : {questions.category}
+          category : {(questions.category).toUpperCase()}
         </div>
         </div>
         
