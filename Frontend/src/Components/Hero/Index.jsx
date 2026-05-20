@@ -6,6 +6,7 @@ import ReactGA from "react-ga4";
 import history from "/history.png";
 import geography from "/geography.png";
 import polity from "/polity.png";
+// import Time from "../../Features/Quizes/Time";
 import computer from "/computer.png";
 import { Link, useNavigate } from "react-router-dom";
 import Questionaddinbulk from '../../Features/Questionaddinbulk'
@@ -17,6 +18,7 @@ function Index() {
   return (
     <div className=" mt-10  flex flex-col   ">
       <div className=" w-full flex flex-row ">
+      
         <div
           onClick={() => {
             ReactGA.event({
@@ -25,7 +27,7 @@ function Index() {
             });
             // console.log("attempt quesdtion");
           }}
-          className="  "
+          className=" ml-5 md:ml-20"
         >
           <AddQuestionButton />
         </div>
@@ -38,7 +40,7 @@ function Index() {
             });
             // console.log("attempt quesdtion");
           }}
-          className=" ml-5 "
+          className=" ml-5  md:ml-20"
         >
           <AttemptQuiz />
         </div>

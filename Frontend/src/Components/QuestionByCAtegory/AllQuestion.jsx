@@ -9,14 +9,14 @@ function AllQuestion() {
   const navigate = useNavigate()
 const [changeQuestion, setChangeQuestion] = useState()
 const [currentIndex, setCurrentIndex] = useState(0);
- const handleChangeQuestion = (incomingData) => {
+ const handleChangeQuestion = (incomingData, score = 0,time = 0 ) => {
     if(incomingData%25 == 0){
       setChangeQuestion(incomingData);
     }
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(prevIndex => prevIndex + 1);
     } else {
-      alert("Quiz Finished!");
+      alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
        navigate('/')
       // You can redirect them or show a score screen here
     }

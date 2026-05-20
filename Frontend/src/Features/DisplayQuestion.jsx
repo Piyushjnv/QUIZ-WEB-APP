@@ -9,7 +9,7 @@ function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
     <div className=" max-w-8/10 mx-auto   flex flex-col box-border text-white ">
       {/*  question and option  */}
       <div className="  ">
-        <div className=" bg-[#16161f]   min-h-15 max-h-fit font-bold p-2 item-center border-2 rounded m-2 mt-5 mb-5">
+        <div className=" bg-[#16161f]   min-h-15 max-h-fit font-bold p-2 item-center border-2 rounded m-2 mt-2 mb-4">
           {" "}
           <span className="  font-bold  m-2">{Qno} : </span> {question.Question}
         </div>
@@ -25,7 +25,7 @@ function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
                 sendoptionData(1);
               }
             }}
-            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-5 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
+            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-2 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
           >
             <input
               disabled={desableooption}
@@ -53,7 +53,7 @@ function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
               setSelectedOption(question.Option2);
               sendoptionData(2);}
             }}
-            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-5 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
+            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-2 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
           >
             <input
               className=" m-2 border rounded"
@@ -76,7 +76,7 @@ function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
               setSelectedOption(question.Option3);
               sendoptionData(3);
 }            }}
-            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-5 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
+            className="flex  text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-2 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
           >
             {" "}
             <input
@@ -101,7 +101,7 @@ function DisplayQuestion({ question, Qno, sendoptionData, desableooption }) {
                 sendoptionData(4);
               }
             }}
-            className="flex   text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-5 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
+            className="flex   text-center flex-row max-h-fit min-h-15 border-[1.5px] border-[#2a2a3a] m-2 mb-3 cursor-pointer bg-[#16161f] hover:bg-[#f5c51828] hover:border-[#ffd53e] transition-colors p-2 gap-2 rounded-lg "
           >
             <input
               type="radio"

@@ -89,7 +89,7 @@ export const Computer = async (req, res) => {
             { 
     $match: { category : "computer" } 
   },
-  { $sample: { size: 5 } }
+  { $sample: { size: 20 } }
 ]);
         // console.log(questions, "i am questions in controller");
          if(questions.length === 0) {
