@@ -1,5 +1,5 @@
 import addQuestion from "../models/question.models.js";
-import addQuestion from "../models/nettQuestion.models.js";
+import addQuestions from "../models/nettQuestion.models.js";
 
 export const sendQuestions = async (req, res) => {
     try {
@@ -423,7 +423,7 @@ export const biology = async (req, res) => {
     try {
         // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
-        const questions = await addQuestion.aggregate([
+        const questions = await addQuestions.aggregate([
             { 
     $match: { category : "biology" } 
   },
@@ -465,7 +465,7 @@ export const chemistry = async (req, res) => {
     try {
         // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
-        const questions = await addQuestion.aggregate([
+        const questions = await addQuestions.aggregate([
             { 
     $match: { category : "chemistry" } 
   },
@@ -507,7 +507,7 @@ export const physics = async (req, res) => {
     try {
         // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
-        const questions = await addQuestion.aggregate([
+        const questions = await addQuestions.aggregate([
             { 
     $match: { category : "physics" } 
   },
@@ -549,7 +549,7 @@ export const neet = async (req, res) => {
     try {
         // console.log( "Hello, world!");
         // const questions = await addQuestion.findOne()
-        const questions = await addQuestion.aggregate([
+        const questions = await addQuestions.aggregate([
   { $sample: { size: 25 } }
 ]);
         // console.log(questions, "i am questions in controller");
