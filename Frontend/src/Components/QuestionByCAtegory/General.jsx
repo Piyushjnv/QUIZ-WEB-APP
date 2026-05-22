@@ -2,6 +2,7 @@ import React,{useState , useEffect} from 'react'
 import Q_attempt from '../../Features/Q_attempt'
 import API from "../../API/Api";
 import { useNavigate } from "react-router-dom"
+import Loader from '../../Features/Quizes/Loader';
 
 function General() {
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ useEffect(() => {
   }, []);
 // console.log(questions, typeof questions , "i am questions in useeffect");
 if (!questions || questions.length === 0) {
-    return <div>Loading questions...</div>;
+    return <div><Loader /></div>;
   }
   const currentQuestion = questions[currentIndex];
   return (

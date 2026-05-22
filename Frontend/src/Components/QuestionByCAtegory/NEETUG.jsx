@@ -4,16 +4,14 @@ import API from "../../API/Api";
 import { useNavigate } from "react-router-dom"
 import Loader from '../../Features/Quizes/Loader';
 
-function AllQuestion() {
-
-  const [questions, setQuestions] = useState([])
+function NeetUg () {
   const navigate = useNavigate()
-const [changeQuestion, setChangeQuestion] = useState()
+const [questions, setQuestions] = useState([])
+const [changeQuestion, setChangeQuestion] = useState([])
+
 const [currentIndex, setCurrentIndex] = useState(0);
- const handleChangeQuestion = (incomingData, score = 0,time = 0 ) => {
-    if(incomingData%25 == 0){
-      setChangeQuestion(incomingData);
-    }
+ const handleChangeQuestion = (incomingData, score = 0,time = 0) => {
+    setChangeQuestion(incomingData);
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(prevIndex => prevIndex + 1);
     } else {
@@ -22,10 +20,11 @@ const [currentIndex, setCurrentIndex] = useState(0);
       // You can redirect them or show a score screen here
     }
   };
+  
 useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await API.get("user/qsend");
+        const response = await API.get("user/qsend/general");
         setQuestions(response.data.data);
         // setNextClicked(false);
       } catch (error) {
@@ -34,17 +33,23 @@ useEffect(() => {
     };
     fetchQuestions();
     // console.log(questions, "i am questions in useeffect");
-  }, [changeQuestion]);
-  
+  }, []);
+// console.log(questions, typeof questions , "i am questions in useeffect");
 if (!questions || questions.length === 0) {
     return <div><Loader /></div>;
   }
-    const currentQuestion = questions[currentIndex];
+  const currentQuestion = questions[currentIndex];
   return (
     <div>
-        <Q_attempt questions={currentQuestion} changeQuestion={handleChangeQuestion} />
+       
+            
+            
+              <Q_attempt questions={currentQuestion} changeQuestion={handleChangeQuestion} />
+            
+         
+        {/* <Q_attempt questions={questions} changeQuestion={handleChangeQuestion} /> */}
     </div>
   )
 }
 
-export default AllQuestion
+export default NeetUg 
