@@ -6,6 +6,9 @@ import ReactGA from "react-ga4";
 import history from "/history.png";
 import geography from "/geography.png";
 import polity from "/polity.png";
+
+
+
 // import Time from "../../Features/Quizes/Time";
 import computer from "/computer.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -152,7 +155,8 @@ function Index() {
           </div>
         </div> */}
       </div>
-      <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
+
+      <div className=" flex flex-row mt-10 justify-between mx-auto  gap-12">
          <div
           className="w-fit items-center "
           onClick={() => {
@@ -219,6 +223,78 @@ function Index() {
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             SCIENCE
+          </div>
+        </div>
+      </div>
+      {/* neet  */}
+        
+        <div className=" flex flex-row mt-10 mb-10 border-[1.4px] rounded-2xl p-5 justify-between mx-auto gap-12">
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("neet/biology");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            BIOLOGY
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("neet/physics");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            PHYSICS
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("neet/chemistry");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            CHEMISTRY
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("neet/allneet");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src="" alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            NEET
           </div>
         </div>
       </div>

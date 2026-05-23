@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { useEffect, useState } from "react";
 import Api from "../API/Api";
 
-function Questionaddinbulk() {
+function Questionaddinbulk({qtype}) {
   const [questions, setquestion] = useState([]);
   const [message, setmessage] = useState();
   // const questions = [
@@ -260,9 +260,26 @@ function Questionaddinbulk() {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const Onsubmit1 = async (question) => {
     try {
-      // uestu
-      Api.post("user/qadd", question)
+
+      if(qtype === "Gov"){
+       Api.post("user/qadd", question)
         .then((response) => {
+
+          const data = response.data;
+          if (data.success == true) {
+     
+            setmessage("Question added successfully!");
+            
+          }
+          console.log(data, "data after question1 add");
+        })
+        .catch((error) => {
+          // console.log("error in question add ", error);
+          // console.log(error.response.data.message || "Error adding question.");
+          setmessage(error.response.data.message || "Error adding question.");
+        });
+      } else if(qtype == "neet"){
+ Api.post("/user/qaddneet", question).then((response) => {
           // console.log("question at submit function ",question);
           const data = response.data;
           if (data.success == true) {
@@ -280,7 +297,8 @@ function Questionaddinbulk() {
           // console.log("error in question add ", error);
           // console.log(error.response.data.message || "Error adding question.");
           setmessage(error.response.data.message || "Error adding question.");
-        });
+        })
+      }
     } catch (error) {
       console.log("coed not run ", error);
       setmessage("Error adding question.");
@@ -302,13 +320,7 @@ function Questionaddinbulk() {
         category: question1.category,
       };
 
-      // setTimeout( async () => {
-      //    console.log("run button ", data);
-      //    await delay(3000);
-      //        console.log("question added successfully");
-      //       //  setmessage("");
-      //     }, 2000);
-      //  console.log("run button ", question1);
+      
       Onsubmit1(data);
     });
   };

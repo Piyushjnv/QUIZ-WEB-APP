@@ -7,6 +7,7 @@ import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import Profile from './Components/Header/Profile'
 import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
+import NeetUg from './Components/QuestionByCAtegory/NEETUG'
 // import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
 import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English, Static, Economics,Science, General} from "./Components/QuestionByCAtegory"
 
@@ -80,6 +81,10 @@ const Routes = createBrowserRouter([
                                 element: <Economics />
                             },
                         ]
+                    },
+                    {
+                        path: "/user/neet/:id",
+                        element: <NeetUg />
                     },
                     {
                         path:"/user/questions",

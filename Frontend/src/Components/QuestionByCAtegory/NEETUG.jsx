@@ -20,11 +20,11 @@ const [currentIndex, setCurrentIndex] = useState(0);
       // You can redirect them or show a score screen here
     }
   };
-  
+  console.log(window.location.pathname)
 useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await API.get("user/qsend/general");
+        const response = await API.get(`${window.location.pathname}`);
         setQuestions(response.data.data);
         // setNextClicked(false);
       } catch (error) {

@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import ReactGA from 'react-ga4';
+import ReactGA from "react-ga4";
 import Api from "../API/Api";
-import Questionaddinbulk from './Questionaddinbulk'
-ReactGA.initialize('G-JM3Z9CLVYP'); // Replace with your GA4 measurement ID
+import Questionaddinbulk from "./Questionaddinbulk";
+ReactGA.initialize("G-JM3Z9CLVYP"); // Replace with your GA4 measurement ID
 
 function Q_add() {
-  const [islogin , setlogin] = useState()
+  const [islogin, setlogin] = useState();
   const [category, setcategory] = useState("");
-  const userID = ((JSON.parse(localStorage.getItem("user")))._id || 1)
-  // console.log(userID);
-  
+  const [qtype, setqtype]= useState()
+  const userID = JSON.parse(localStorage.getItem("user"))._id || 1;
+  // console.log("type", qtype);
+
   const [question, setQuestion] = useState({
     Username: userID,
     Question: "",
@@ -27,21 +28,20 @@ function Q_add() {
     setQuestion((prev) => ({ ...prev, [name]: value }));
   };
 
- 
- useEffect(() => {
-     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-   }, []);
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   const Onsubmit = () => {
     try {
       console.log(question);
-// questu
-      Api
-      .post("/user/qadd", question).then(
-        (response)=>{
-          const data = response.data
-          if( data.success == true) {
-            alert("question added successfully")
-             setQuestion({
+      console.log(qtype == "neet");
+      if(qtype === "neet")
+      {
+           Api.post("/user/qaddneet", question).then((response) => {
+        const data = response.data;
+        if (data.success == true) {
+          // alert("question added successfully");
+          setQuestion({
             Username: userID,
             Question: "",
             Option1: "",
@@ -51,24 +51,63 @@ function Q_add() {
             correctoption: "",
             category: "",
           });
-          }
-         
-          console.log(data);
-          
         }
-      )
-    } catch (error) { }
+
+        console.log(data);
+      });
+        
+      } else if(qtype === 'Gov'){
+            Api.post("/user/qadd", question).then((response) => {
+        const data = response.data;
+        if (data.success == true) {
+          // alert("question added successfully");
+          setQuestion({
+            Username: userID,
+            Question: "",
+            Option1: "",
+            Option2: "",
+            Option3: "",
+            Option4: "",
+            correctoption: "",
+            category: "",
+          });
+        }
+
+        console.log(data);
+      });
+      }
+      else {
+        console.log("GOVV");
+        alert("dfhgfbk ")
+      }
+  
+    } catch (error) {}
   };
 
   return (
     <div className="md:max-w-8/10 mx-auto p-5 w-full ">
       <div className=" mb-10 mt-5">
-  {
-   JSON.parse(localStorage.getItem('user')).role === 'ADMIN' ? <Questionaddinbulk /> : ''
-  }
-</div>
+        <div>
+          <input 
+          onChange={(e)=> {
+            setqtype("Gov")
+          }}
+          type="radio" name="sub" className=" m-5" id="GOV" />{" "}
+          <label htmlFor="GOV">GOVERMENT EXAM </label>
+          <input 
+          onChange={(e)=> {
+            setqtype("neet")
+          }}
+          type="radio" name="sub" className=" m-5" id="neet" />{" "}
+          <label htmlFor="neet">NEET EXAM </label>
+        </div>
+        {JSON.parse(localStorage.getItem("user")).role === "ADMIN" ? (
+          <Questionaddinbulk qtype={qtype} />
+        ) : (
+          ""
+        )}
+      </div>
       <div className=" border p-4 rounded-lg shadow-md  text-2xl">
-       
         <div className="flex flex-col box-border ">
           <input
             type="text"
@@ -79,56 +118,47 @@ function Q_add() {
             className=" m-3 p-2 border rounded-lg  "
           />
           <div className=" w-full m-3 box-border ">
-            
-             <input
-            type="text"
-            value={question.Option1}
-            onChange={handleChange}
-            placeholder="Option 1"
-            name="Option1"
-            className=" p-2 w-96/100
+            <input
+              type="text"
+              value={question.Option1}
+              onChange={handleChange}
+              placeholder="Option 1"
+              name="Option1"
+              className=" p-2 w-96/100
         
         border rounded-lg "
-          />
+            />
           </div>
-           <div className=" w-full m-3 box-border ">
-          <input
-            type="text"
-            value={question.Option1}
-            onChange={handleChange}
-            placeholder="Option 1"
-            name="Option1"
-            className=" p-2  w-96/100
-        
-        border rounded-lg "
-          /></div>
-           <div className=" w-full m-3 box-border ">
-          <input
-            type="text"
-            placeholder="Option 2"
-            name="Option2"
-            value={question.Option2}
-            onChange={handleChange}
-            className=" p-2 border  w-96/100 rounded-lg "
-          /></div>
-           <div className=" w-full m-3 box-border ">
-          <input
-            type="text"
-            placeholder="Option 3"
-            name="Option3"
-            value={question.Option3}
-            onChange={handleChange}
-            className=" p-2 border  w-96/100 rounded-lg "
-          /></div>
-           <div className=" w-full m-3 box-border ">
-          <input
-            type="text"
-            placeholder="Option 4"
-            name="Option4"
-            value={question.Option4}
-            onChange={handleChange}
-            className=" p-2 border  w-96/100 rounded-lg "
-          /></div>
+          <div className=" w-full m-3 box-border ">
+            <input
+              type="text"
+              placeholder="Option 2"
+              name="Option2"
+              value={question.Option2}
+              onChange={handleChange}
+              className=" p-2 border  w-96/100 rounded-lg "
+            />
+          </div>
+          <div className=" w-full m-3 box-border ">
+            <input
+              type="text"
+              placeholder="Option 3"
+              name="Option3"
+              value={question.Option3}
+              onChange={handleChange}
+              className=" p-2 border  w-96/100 rounded-lg "
+            />
+          </div>
+          <div className=" w-full m-3 box-border ">
+            <input
+              type="text"
+              placeholder="Option 4"
+              name="Option4"
+              value={question.Option4}
+              onChange={handleChange}
+              className=" p-2 border  w-96/100 rounded-lg "
+            />
+          </div>
         </div>
       </div>
 
@@ -185,15 +215,15 @@ function Q_add() {
         <label htmlFor="Category" className=" font-bold ">
           Category* :{" "}
         </label>
+        {qtype === "Gov"?  
         <select
-          className=" border-2 rounded-xl"
+          className=" border-2 rounded-xl bg-gray-800 text-white"
           // value={(e) => (e.target.value)}
           value={question.category}
           name="category"
-          onChange={
-            handleChange
-          }
-          id="Category">
+          onChange={handleChange}
+          id="Category"
+        >
           <option value="NA">N/A ?</option>
           <option value="Science">Science</option>
           <option value="History">History</option>
@@ -205,7 +235,45 @@ function Q_add() {
           <option value="Static">Static</option>
           <option value="Economics">Economics</option>
           <option value="Computer">Computer</option>
-        </select>
+        </select> :  <select
+          className=" border-2 rounded-xl bg-gray-800 text-white"
+          // value={(e) => (e.target.value)}
+          value={question.category}
+          name="category"
+          onChange={handleChange}
+          id="Category"
+        >
+          <option value="NA">N/A ?</option>
+          <option value="biology">BIOLOGY</option>
+          <option value="chemistry">CHEMISTRY</option>
+          <option value="physics">PHYSICS</option>
+          {/* <option value="Geography">Geography</option> */}
+          {/* <option value="Polity">Polity</option> */}
+          {/* <option value="Games">Games</option> */}
+          {/* <option value="Static">Static</option> */}
+          {/* <option value="Economics">Economics</option> */}
+          {/* <option value="Computer">Computer</option> */}
+        </select>}
+        {/* <select
+          className=" border-2 rounded-xl"
+          // value={(e) => (e.target.value)}
+          value={question.category}
+          name="category"
+          onChange={handleChange}
+          id="Category"
+        >
+          <option value="NA">N/A ?</option>
+          <option value="Science">Science</option>
+          <option value="History">History</option>
+          <option value="General">General</option>
+          <option value="Current">Current</option>
+          <option value="Geography">Geography</option>
+          <option value="Polity">Polity</option>
+          <option value="Games">Games</option>
+          <option value="Static">Static</option>
+          <option value="Economics">Economics</option>
+          <option value="Computer">Computer</option>
+        </select> */}
       </div>
       <div className=" flex w-full justify-center">
         {" "}
