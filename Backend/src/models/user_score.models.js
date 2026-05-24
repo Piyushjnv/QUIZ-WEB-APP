@@ -21,6 +21,9 @@ const scoreSchema = new mongoose.Schema({
     },
     IncorrectquestionsId : {
         type: Array
+    },
+    name : {
+        type: String
     }
 
 },{
