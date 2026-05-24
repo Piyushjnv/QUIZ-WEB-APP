@@ -7,29 +7,24 @@ const scoreSchema = new mongoose.Schema({
         ref: "users",
         required: true
     },
-
-    // QuizId : {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "questions",
-    //     required: true
-    // },
     Score : {
         type: Number,
-        required : true
+       
     },
     totalQues : {
         type: Number,
-        required : true
+        default: 25
+
     },
-    //  IsCorrectQues : {
-    //     type: Number,
-    //     required : true
-    // },
-    SubmittedAt :{
-        type: Date,
-        default : Date.now
+    correctQuestionsId: {
+        type: Array
+    },
+    IncorrectquestionsId : {
+        type: Array
     }
 
+},{
+    timestamps : true
 })
 
 export default mongoose.model("userScore",  scoreSchema)

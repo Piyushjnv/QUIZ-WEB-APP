@@ -20,7 +20,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
       // You can redirect them or show a score screen here
     }
   };
-  console.log(window.location.pathname)
+  // console.log(window.location.pathname)
 useEffect(() => {
     const fetchQuestions = async () => {
       try {

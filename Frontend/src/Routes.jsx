@@ -10,7 +10,7 @@ import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 import NeetUg from './Components/QuestionByCAtegory/NEETUG'
 // import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
 import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English, Static, Economics,Science, General} from "./Components/QuestionByCAtegory"
-
+import GovExam from './Components/QuestionByCAtegory/GovermentQuestiom'
 const Routes = createBrowserRouter([
     {
         path:"/",
@@ -41,54 +41,58 @@ const Routes = createBrowserRouter([
                         element: <Index />
 
                     },
+                    // {
+                    //     path:"/user/question",
+                    //     children:[
+                    //         {
+                    //             path:"/user/question/history",
+                    //             element: <HistoryQuetion />
+                    //         },
+                    //         {
+                    //             path:"/user/question/computer",
+                    //             element: <Computer />
+                    //         },
+                    //         {
+                    //             path:"/user/question/polity",
+                    //             element: <Polity />
+                    //         },
+                    //         {
+                    //             path:"/user/question/geography",
+                    //             element: <Geography />
+                    //         },
+                    //         {
+                    //             path:"/user/question/english",
+                    //             element: <English />
+                    //         },
+                    //         {
+                    //             path:"/user/question/static",
+                    //             element: <Static />
+                    //         },
+                    //         {
+                    //             path:"/user/question/general",
+                    //             element: <General />
+                    //         },
+                    //         {
+                    //             path:"/user/question/science",
+                    //             element: <Science />
+                    //         },
+                    //         {
+                    //             path:"/user/question/economics",
+                    //             element: <Economics />
+                    //         },
+                    //     ]
+                    // },
                     {
-                        path:"/user/question",
-                        children:[
-                            {
-                                path:"/user/question/history",
-                                element: <HistoryQuetion />
-                            },
-                            {
-                                path:"/user/question/computer",
-                                element: <Computer />
-                            },
-                            {
-                                path:"/user/question/polity",
-                                element: <Polity />
-                            },
-                            {
-                                path:"/user/question/geography",
-                                element: <Geography />
-                            },
-                            {
-                                path:"/user/question/english",
-                                element: <English />
-                            },
-                            {
-                                path:"/user/question/static",
-                                element: <Static />
-                            },
-                            {
-                                path:"/user/question/general",
-                                element: <General />
-                            },
-                            {
-                                path:"/user/question/science",
-                                element: <Science />
-                            },
-                            {
-                                path:"/user/question/economics",
-                                element: <Economics />
-                            },
-                        ]
+                        path: "/user/qsend/:id",
+                        element: <GovExam />
                     },
                     {
                         path: "/user/neet/:id",
                         element: <NeetUg />
                     },
                     {
-                        path:"/user/questions",
-                        element: <AllQuestion />
+                        path:"/user/qsend",
+                        element: <GovExam />
                     },
                     {
                         path:"/user/qadd",

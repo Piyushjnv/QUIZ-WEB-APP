@@ -4,12 +4,14 @@ import neetqadd from "../controllers/NeetQuestionadd.js"
 import {sendQuestions , History, Computer, Polity, Geography, English, economics, general, science,Static , neet, biology, chemistry, physics } from "../controllers/questionsend.controller.js";
 import { loginUser, logout, registerUser } from "../controllers/user.controller.js";
 import express from "express";
+import userScore from "../controllers/userscore.controllers.js";
 const router = express.Router();
 
 router.post("/register", registerUser)
 
 router.post("/login", loginUser)
 router.route("/logout").post(logout)
+// questiion 
 router.route("/qadd").post(addQuestions)
 router.route("/qaddneet").post(neetqadd)
 router.route("/qsend").get(sendQuestions) 
@@ -26,4 +28,5 @@ router.route("/neet/allneet").get(neet)
 router.route("/neet/biology").get(biology)
 router.route("/neet/chemistry").get(chemistry)
 router.route("/neet/physics").get(physics)
+router.route("/score").post(userScore)
 export default router

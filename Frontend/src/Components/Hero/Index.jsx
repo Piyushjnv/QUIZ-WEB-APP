@@ -26,7 +26,7 @@ function Index() {
           onClick={() => {
             ReactGA.event({
               category: "Add Question",
-              action: "Clicked add question button",
+              action: "Clicked add qsend button",
             });
             // console.log("attempt quesdtion");
           }}
@@ -39,7 +39,7 @@ function Index() {
           onClick={() => {
             ReactGA.event({
               category: "Question Attempt",
-              action: "Clicked attempt question button",
+              action: "Clicked attempt qsend button",
             });
             // console.log("attempt quesdtion");
           }}
@@ -57,7 +57,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/history");
+              navigate("qsend/history");
             } else {
               navigate("/login");
             }
@@ -75,7 +75,7 @@ function Index() {
             // console.log('geography');
             
             if (localStorage.getItem("login") === "true") {
-              navigate("question/geography");
+              navigate("qsend/geography");
             } else {
               navigate("/login");
             }
@@ -90,7 +90,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/polity");
+              navigate("qsend/polity");
             } else {
               navigate("/login");
             }
@@ -105,7 +105,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/computer");
+              navigate("qsend/computer");
             } else {
               navigate("/login");
             }
@@ -124,7 +124,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/computer");
+              navigate("qsend/computer");
             } else {
               navigate("/login");
             }
@@ -141,7 +141,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/computer");
+              navigate("qsend/computer");
             } else {
               navigate("/login");
             }
@@ -161,7 +161,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/static");
+              navigate("qsend/static");
             } else {
               navigate("/login");
             }
@@ -178,7 +178,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/general");
+              navigate("qsend/general");
             } else {
               navigate("/login");
             }
@@ -195,7 +195,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/economics");
+              navigate("qsend/economics");
             } else {
               navigate("/login");
             }
@@ -212,7 +212,7 @@ function Index() {
           className="w-fit items-center "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
-              navigate("question/science");
+              navigate("qsend/science");
             } else {
               navigate("/login");
             }

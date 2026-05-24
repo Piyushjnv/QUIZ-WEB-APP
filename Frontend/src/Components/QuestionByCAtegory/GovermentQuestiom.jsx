@@ -5,32 +5,31 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../Features/Quizes/Loader";
 import Score from "../../Features/Quizes/Score";
 
-function HistoryQuetion() {
+function GovExam() {
     const navigate = useNavigate();
-    const [correctq, setCorrectq] = useState([])
-    const [inCorrectq, setInCorrectq] = useState([])
     const [questions, setQuestions] = useState([]);
     const [changeQuestion, setChangeQuestion] = useState([]);
-
+    const [correctq, setCorrectq] = useState([]);
+    const [inCorrectq, setInCorrectq] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const handleChangeQuestion = (incomingData, score = 0, time = 0) => {
         setChangeQuestion(incomingData);
         if (currentIndex < questions.length - 1) {
             setCurrentIndex((prevIndex) => prevIndex + 1);
         } else {
-            // <Score
-            //     score={score}
-            //     totalquestion={5}
-            //     correctId={correctq}
-            //     IncorrectID={inCorrectq}
-            // />;
-            Score({score : score, totalquestion : questions.length , correctId: correctq , IncorrectID: inCorrectq})
+            Score({
+                score: score,
+                totalquestion: questions.length,
+                correctId: correctq,
+                IncorrectID: inCorrectq,
+            });
             alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
             navigate("/user");
             // You can redirect them or show a score screen here
         }
     };
-    const HandelattemptQuestion = ({correctq = "", incorrectq= ""}) => {
+    // console.log(window.location.pathname);
+     const HandelattemptQuestion = ({correctq = "", incorrectq= ""}) => {
       if( !(correctq === "")){
         setCorrectq((prev) => [...prev, correctq]);
 
@@ -41,11 +40,10 @@ function HistoryQuetion() {
 
       }
     }
-
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await API.get("user/qsend/history");
+                const response = await API.get(`${window.location.pathname}`);
                 setQuestions(response.data.data);
                 // setNextClicked(false);
             } catch (error) {
@@ -55,7 +53,6 @@ function HistoryQuetion() {
         fetchQuestions();
         // console.log(questions, "i am questions in useeffect");
     }, []);
-    // console.log(questions, typeof questions , "i am questions in useeffect");
     if (!questions || questions.length === 0) {
         return (
             <div>
@@ -71,8 +68,9 @@ function HistoryQuetion() {
                 changeQuestion={handleChangeQuestion}
                 HandelattemptQuestion={HandelattemptQuestion}
             />
+
         </div>
     );
 }
 
-export default HistoryQuetion;
+export default GovExam;

@@ -9,7 +9,7 @@ import Time from "./Quizes/Time";
 
 ReactGA.initialize('G-JM3Z9CLVYP');
 
-function Q_attempt({questions , changeQuestion}) {
+function Q_attempt({questions , changeQuestion , HandelattemptQuestion}) {
   // const [questions, setQuestions] = useState([]);
   const [questionsno, setQuestionsno] = useState(1);
   const [score, setScore] = useState(0);
@@ -38,8 +38,10 @@ function Q_attempt({questions , changeQuestion}) {
       setScore(score + 1);
       changecolor.classList.add("bg-[#0080003b]");
       changecolor.classList.add("border-[green]");
+      HandelattemptQuestion({correctq : questions._id})
       // console.log("correct");
     } else {
+      HandelattemptQuestion({ incorrectq : questions._id})
       changecolor.classList.add("bg-[#fb2c36c2]");
       changecolor.classList.add("border-red");
       changecolorofcorrect.classList.add("bg-[#00800024]");

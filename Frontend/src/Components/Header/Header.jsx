@@ -61,13 +61,13 @@ user}`:" And Welcome"}
 
          
 
-            <li  className='p-1 text-center basis-1/4 font-bold hover:bg-gray-800 dark:hover:shadow-lg  hover:text-white rounded-2xl  '>
+            {/* <li  className='p-1 text-center basis-1/4 font-bold hover:bg-gray-800 dark:hover:shadow-lg  hover:text-white rounded-2xl  '>
               <NavLink 
               to={'/'}
               >
               HOME
               </NavLink>
-            </li>
+            </li> */}
             
                {/* <li  className='p-2 text-center basis-1/4 font-bold hover:bg-gray-800 dark:hover:shadow-lg  hover:text-white rounded-2xl  '>
               <NavLink 
