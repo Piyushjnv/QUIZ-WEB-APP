@@ -6,10 +6,10 @@ import Q_add from './Features/Q_add'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import Profile from './Components/Header/Profile'
-import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
+// import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 import NeetUg from './Components/QuestionByCAtegory/NEETUG'
-// import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
-import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English, Static, Economics,Science, General} from "./Components/QuestionByCAtegory"
+import AllQuestion from './Components/QuestionByCAtegory/AllQuestion'
+// import {HistoryQuetion, Computer, AllQuestion, Polity, Geography, English, Static, Economics,Science, General} from "./Components/QuestionByCAtegory"
 import GovExam from './Components/QuestionByCAtegory/GovermentQuestiom'
 const Routes = createBrowserRouter([
     {
