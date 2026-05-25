@@ -6,6 +6,10 @@ import ReactGA from "react-ga4";
 import history from "/history.png";
 import geography from "/geography.png";
 import polity from "/polity.png";
+import science from "/science.png";
+import economiscs from "/economics.png";
+import general from"/general.png"
+import static1 from "/static.png"
 
 
 
@@ -168,7 +172,7 @@ function Index() {
           }}
         >
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
+            <img src={static1} alt="" />
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             STATIC
@@ -185,7 +189,7 @@ function Index() {
           }}
         >
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
+            <img src={general} alt="" />
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             GENERAL
@@ -202,7 +206,7 @@ function Index() {
           }}
         >
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
+            <img src={economiscs} alt="" />
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             ECONOMICS
@@ -219,7 +223,7 @@ function Index() {
           }}
         >
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
+            <img src={science} alt="" />
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             SCIENCE
