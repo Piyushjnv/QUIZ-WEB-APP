@@ -160,7 +160,7 @@ function Index() {
         </div> */}
       </div>
 
-      <div className=" flex flex-row mt-10 justify-between mx-auto  gap-12">
+      <div className=" flex flex-row mt-10 justify-between mx-auto mb-20 gap-12">
          <div
           className="w-fit items-center "
           onClick={() => {
@@ -232,7 +232,7 @@ function Index() {
       </div>
       {/* neet  */}
         
-        <div className=" flex flex-row mt-10 mb-10 border-[1.4px] rounded-2xl p-5 justify-between mx-auto gap-12">
+        {/* <div className=" flex flex-row mt-10 mb-10 border-[1.4px] rounded-2xl p-5 justify-between mx-auto gap-12">
          <div
           className="w-fit items-center "
           onClick={() => {
@@ -301,7 +301,7 @@ function Index() {
             NEET
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
