@@ -91,6 +91,14 @@ const Routes = createBrowserRouter([
                         element: <NeetUg />
                     },
                     {
+                        path: "/user/maths/:id",
+                        element: <Maths />
+                    },
+                    {
+                        path: "/user/english/:id",
+                        element: <English />
+                    },
+                    {
                         path:"/user/qsend",
                         element: <GovExam />
                     },

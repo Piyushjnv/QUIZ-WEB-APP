@@ -8,7 +8,7 @@ ReactGA.initialize("G-JM3Z9CLVYP"); // Replace with your GA4 measurement ID
 function Q_add() {
   const [islogin, setlogin] = useState();
   const [category, setcategory] = useState("");
-  const [qtype, setqtype]= useState()
+  const [qtype, setqtype]= useState("Gov")
   const userID = JSON.parse(localStorage.getItem("user"))._id || 1;
   // console.log("type", qtype);
 
@@ -34,10 +34,10 @@ function Q_add() {
   const Onsubmit = () => {
     try {
       console.log(question);
-      console.log(qtype == "neet");
-      if(qtype === "neet")
+      console.log(qtype == "ENG");
+      if(qtype === "ENG")
       {
-           Api.post("/user/qaddneet", question).then((response) => {
+           Api.post("/user/engqadd", question).then((response) => {
         const data = response.data;
         if (data.success == true) {
           // alert("question added successfully");
@@ -75,32 +75,68 @@ function Q_add() {
 
         console.log(data);
       });
-      }
-      else {
-        console.log("GOVV");
-        alert("dfhgfbk ")
+      }else if(qtype === "MATHS"){
+        Api.post("/user/mathqadd", question).then((response) => {
+          const data = response.data;
+          if (data.success == true) {
+            // alert("question added successfully");
+            setQuestion({
+              Username: userID,
+              Question: "",
+              Option1: "",
+              Option2: "",
+              Option3: "",
+              Option4: "",
+              correctoption: "",
+              category: "",
+            });
+          }
+          // console.log(data);
+        });
+      } else {
+        // console.log("GOVV");
+        alert("please select a question type");
       }
   
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="md:max-w-8/10 mx-auto p-5 w-full ">
       <div className=" mb-10 mt-5">
-        <div>
+
+        {/* Question Type Selection */}
+        <div className="font-bold ">
           <input 
+          checked={qtype === "Gov"}
           onChange={(e)=> {
             setqtype("Gov")
           }}
           type="radio" name="sub" className=" m-5" id="GOV" />{" "}
-          <label htmlFor="GOV">GOVERMENT EXAM </label>
+          <label htmlFor="GOV">GK-GS</label>
           <input 
+          checked={qtype === "ENG"}
           onChange={(e)=> {
-            setqtype("neet")
+            setqtype("ENG")
           }}
           type="radio" name="sub" className=" m-5" id="neet" />{" "}
-          <label htmlFor="neet">NEET EXAM </label>
+          <label htmlFor="neet"> ENGLISH </label>
+          <input 
+          checked={qtype === "MATHS"}
+          onChange={(e)=> {
+            setqtype("MATHS")
+          }}
+          type="radio" name="sub" className=" m-5" id="MATHS" />{" "}
+          <label htmlFor="MATHS"> MATHS </label>
         </div>
+        {/* section 1 header */}
+         <div className="font-bold text-2xl mb-5">
+          Adding Question for {qtype === "Gov" ? "GK-GS" : qtype === "ENG" ? "English" : qtype === "MATHS" ? "Maths" : "" }
+        </div>
+
+        {/* Question Add In Bulk */}
         {JSON.parse(localStorage.getItem("user")).role === "ADMIN" ? (
           <Questionaddinbulk qtype={qtype} />
         ) : (
@@ -235,7 +271,9 @@ function Q_add() {
           <option value="Static">Static</option>
           <option value="Economics">Economics</option>
           <option value="Computer">Computer</option>
-        </select> :  <select
+        </select>
+         : qtype === "ENG" ?
+         <select
           className=" border-2 rounded-xl bg-gray-800 text-white"
           // value={(e) => (e.target.value)}
           value={question.category}
@@ -244,18 +282,13 @@ function Q_add() {
           id="Category"
         >
           <option value="NA">N/A ?</option>
-          <option value="biology">BIOLOGY</option>
-          <option value="chemistry">CHEMISTRY</option>
-          <option value="physics">PHYSICS</option>
-          {/* <option value="Geography">Geography</option> */}
-          {/* <option value="Polity">Polity</option> */}
-          {/* <option value="Games">Games</option> */}
-          {/* <option value="Static">Static</option> */}
-          {/* <option value="Economics">Economics</option> */}
-          {/* <option value="Computer">Computer</option> */}
-        </select>}
-        {/* <select
-          className=" border-2 rounded-xl"
+          <option value="Vocabulary">Vocabulary</option>
+          <option value="Comprehension">Comprehension</option>
+          <option value="Grammar">Grammar</option>
+          <option value="Sentence Structure">Sentence Structure</option>
+        </select>: qtype === "MATHS" ? 
+        <select
+          className=" border-2 rounded-xl bg-gray-800 text-white"
           // value={(e) => (e.target.value)}
           value={question.category}
           name="category"
@@ -263,17 +296,25 @@ function Q_add() {
           id="Category"
         >
           <option value="NA">N/A ?</option>
-          <option value="Science">Science</option>
-          <option value="History">History</option>
-          <option value="General">General</option>
-          <option value="Current">Current</option>
-          <option value="Geography">Geography</option>
-          <option value="Polity">Polity</option>
-          <option value="Games">Games</option>
-          <option value="Static">Static</option>
-          <option value="Economics">Economics</option>
-          <option value="Computer">Computer</option>
-        </select> */}
+          <option value="Algebra">Algebra</option>
+          <option value="Geometry">Geometry</option>
+          <option value="Arithmetic">Arithmetic</option>
+          <option value="Trigonometry">Trigonometry</option>
+          <option value="Statistics">Statistics</option>
+          <option value="Probability">Probability</option>
+         < option value="Number System">Number System</option>
+          <option value="Mensuration">Mensuration</option>
+          <option value="Simple Interest">Simple Interest</option>
+          <option value="Compound Interest">Compound Interest</option>
+          <option value="Profit & Loss">Profit & Loss</option>
+          <option value="Time & Work">Time & Work</option>
+          <option value="Time Speed Distance">Time Speed Distance</option>
+          <option value="Ratio & Proportion">Ratio & Proportion</option>
+          <option value="Percentage">Percentage</option>
+          <option value="Average">Average</option>
+          <option value="Interest">Interest</option>
+          <option value="Partnership">Partnership</option>
+        </select> : null}
       </div>
       <div className=" flex w-full justify-center">
         {" "}

@@ -9,12 +9,12 @@ function Layout() {
     useEffect(
     ()=> {
        if( localStorage.getItem('login') === 'true'){
-          Api.post("/visit" , JSON.parse(localStorage.getItem("user")))
+          Api.post("/visit" , JSON.parse(localStorage.getItem("user"))) // call whenerver new visitor or user visit 
           navigate('/user')
           // console.log('tudnfjndf');
           
        }else{
-        Api.post("/visit", {visitor: "guest"})
+        Api.post("/visit", {visitor: "guest"}) // call whenerver new visitor or user visit 
         localStorage.setItem('login', false)
        }
     },[]

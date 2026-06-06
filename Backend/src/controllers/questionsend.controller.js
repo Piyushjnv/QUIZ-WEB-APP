@@ -1,5 +1,7 @@
 import addQuestion from "../models/question.models.js";
 import addQuestions from "../models/nettQuestion.models.js";
+import mathsadd from "../models/maths.model.js";
+import engqadd from "../models/englishQuetion.models.js";
 
 export const sendQuestions = async (req, res) => {
     try {
@@ -42,12 +44,12 @@ export const sendQuestions = async (req, res) => {
 }
 export const English = async (req, res) =>{
     try {
-        // console.log( "Hello, world!");
+
         // const questions = await addQuestion.findOne()
-        const questions = await addQuestion.aggregate([
-            { 
-    $match: { category : "english" } 
-  },
+        const questions = await engqadd.aggregate([
+//             { 
+//     $match: { category : "english" } 
+//   },
   { $sample: { size: 25 } }
 ]);
         // console.log(questions, "i am questions in controller");
@@ -61,16 +63,30 @@ export const English = async (req, res) =>{
             .json({
                 success: true,
                 data:  questions 
-                // data: { 
-                //     username: questions[0].Username,
-                //     question: questions[0].Question,
-                //     option1: questions[0].Option1,
-                //     option2: questions[0].Option2,
-                //     option3: questions[0].Option3,
-                //     option4: questions[0].Option4,
-                //     correctOption: questions[0].correctoption,
-                //     category: questions[0].category
-                // }
+            });
+    } catch (error) {
+        console.log('error', error);
+        
+        return res.status(500)
+            .json({
+                success: false,
+                message: "Error fetching questions"
+            });
+    }
+}
+export const Maths = async( req,res) => {
+    try{
+        const questions = await mathsadd.aggregate([
+  { $sample: { size: 25 } }
+]);
+if(questions.length === 0) {
+            return res.status(404).json({ success: false, message: "No questions found" });
+        }
+        if (!questions) { console.log("No questions found"); }
+        return res.status(200)
+            .json({
+                success: true,
+                data:  questions 
             });
     } catch (error) {
         console.log('error', error);

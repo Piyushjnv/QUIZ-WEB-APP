@@ -10,9 +10,8 @@ import science from "/science.png";
 import economiscs from "/economics.png";
 import general from"/general.png"
 import static1 from "/static.png"
-
-
-
+import maths from "/maths.png"
+import english from "/english.png"
 // import Time from "../../Features/Quizes/Time";
 import computer from "/computer.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -24,6 +23,7 @@ function Index() {
 
   return (
     <div className=" mt-10  flex flex-col   ">
+      {/* first row  */}
       <div className=" w-full flex flex-row ">
       
         <div
@@ -55,7 +55,7 @@ function Index() {
 
 
    
-      {/* <div><Questionaddinbulk /></div> */}
+     {/* second row */}
       <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
         <div
           className="w-fit items-center "
@@ -160,7 +160,7 @@ function Index() {
         </div> */}
       </div>
 
-      <div className=" flex flex-row mt-10 justify-between mx-auto mb-20 gap-12">
+      <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
          <div
           className="w-fit items-center "
           onClick={() => {
@@ -227,6 +227,42 @@ function Index() {
           </div>
           <div className="text-center mt-1 font-[1px]  text-[10px] ">
             SCIENCE
+          </div>
+        </div>
+      </div>
+      <div className=" flex flex-row mt-10 justify-between mx-auto mb-20 gap-12">
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("qsend/maths");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
+            <img src={maths} alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+            MATHS
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("qsend/english");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#fffffffb] rounded-full overflow-hidden">
+            <img src={english} alt="" />
+          </div>
+          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+         ENGLISH
           </div>
         </div>
       </div>
