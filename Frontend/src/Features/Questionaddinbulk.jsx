@@ -40,7 +40,7 @@ function Questionaddinbulk({qtype}) {
         .catch((error) => {
           setmessage(error.response.data.message || "Error adding question.");
         })
-      }else if(qtype == "MATH"){
+      }else if(qtype == "MATHS"){
         // maths 
         Api.post("/user/mathqadd", question).then((response) => {
           // console.log("question at submit function ",question);

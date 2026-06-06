@@ -15,9 +15,9 @@ const addQuestions = async (req, res) => {
       
      } = req.body;
      
-     console.log( Username,
-         Question,
-         );
+    //  console.log( Username,
+    //      Question,
+    //      );
 
        if([ Username, Question , Option1,Option2,
          Option3,
