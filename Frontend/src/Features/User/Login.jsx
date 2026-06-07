@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Api from '../../API/Api'
-import {Navigate, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 
 
 export function LoginForm() {
@@ -25,12 +25,12 @@ export function LoginForm() {
             setisdesable(true)
             Api
                 .post(`user/login`, formData)
-                .then( async (response) => {
+                .then(  (response) => {
                     // const {user} = await response.data
-                    if(await response.data.success) {
+                    if(response.data.success) {
                         
-                       await localStorage.setItem("user", JSON.stringify(response.data.user))
-                       await localStorage.setItem("login", true)
+                        localStorage.setItem("user", JSON.stringify(response.data.user))
+                        localStorage.setItem("login", true)
                         navigate("/user")
                     }
                     // console.log(response.data, user.username, user.email)
