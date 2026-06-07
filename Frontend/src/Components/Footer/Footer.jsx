@@ -20,7 +20,7 @@ function Footer() {
            </div>
             <div onClick={()=> navigate('/history')} className='flex mt-5 items-center gap-1 bg-gray-100 font-bold text-[15px] hover:text-gray-900 p-1 rounded  cursor-pointer'>
              {/* &copy; {new Date().getFullYear()} . All rights reserved. */}
-             History
+            ANALYZE PERFORMANCE  <img src={redirect} width={14} height={14} className='ml-1 inline' alt="Redirect" />
           </div>
          </div>
 

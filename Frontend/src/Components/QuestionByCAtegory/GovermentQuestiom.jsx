@@ -23,7 +23,8 @@ function GovExam() {
                 totalquestion: questions.length,
                 correctId: correctq,
                 IncorrectID: inCorrectq,
-                topic: topics
+                topic: topics,
+                timeTaken : time
             });
             alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
             navigate("/user");

@@ -2,7 +2,7 @@ import user_scoreModels from "../models/user_score.models.js";
 
 const userScore = async function(req,res){
         try {
-                const {userId , Score , totalq  , correctQID , IncorrectQID , name , topic} = req.body 
+                const {userId , Score , totalq  , correctQID , IncorrectQID , name , topic, timeTaken} = req.body 
 
         // console.log(userId , Score , totalq  , correctQID , IncorrectQID);
 
@@ -13,7 +13,8 @@ const userScore = async function(req,res){
                 correctQuestionsId: correctQID,
                 IncorrectquestionsId : IncorrectQID,
                  username : name ,
-                topic: topic
+                topic: topic, 
+                timeTaken : timeTaken
         })
         return res.status(200).json({
                 success: true,

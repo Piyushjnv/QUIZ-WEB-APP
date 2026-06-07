@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Api from "../../API/Api";
 
-function Score({ score, totalquestion, correctId, IncorrectID, topic }) {
+function Score({ score, totalquestion, correctId, IncorrectID, topic, timeTaken }) {
     const userid = JSON.parse(localStorage.getItem("user"))._id;
     const username = JSON.parse(localStorage.getItem("user")).fullname
 ;
@@ -12,7 +12,8 @@ function Score({ score, totalquestion, correctId, IncorrectID, topic }) {
         correctQID: correctId,
         IncorrectQID: IncorrectID,
         name: username,
-        topic : topic
+        topic : topic,
+        timeTaken: timeTaken
     };
     // console.log(score, totalquestion, correctId, IncorrectID);
     

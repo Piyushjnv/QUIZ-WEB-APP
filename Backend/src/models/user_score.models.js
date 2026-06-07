@@ -27,6 +27,9 @@ const scoreSchema = new mongoose.Schema({
     },
     topic: {
         type: String
+    },
+    timeTaken:{
+        type: String
     }
 
 },{

@@ -6,6 +6,7 @@ import Q_add from './Features/Q_add'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import History from './Components/History/History'
+import TestAgain from './Components/History/TestAgain'
 import Profile from './Components/Header/Profile'
 // import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 import NeetUg from './Components/QuestionByCAtegory/NEETUG'
@@ -28,7 +29,16 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/history",
-                element: <History />
+                children:[
+                    {
+                        index:true,
+                        element: <History />
+                    },
+                    {
+                    path:"testagain",
+                    element: <TestAgain />
+                    }
+                ]
             },
             {
                 path: "/login",
@@ -46,63 +56,10 @@ const Routes = createBrowserRouter([
                         element: <Index />
 
                     },
-                    // {
-                    //     path:"/user/question",
-                    //     children:[
-                    //         {
-                    //             path:"/user/question/history",
-                    //             element: <HistoryQuetion />
-                    //         },
-                    //         {
-                    //             path:"/user/question/computer",
-                    //             element: <Computer />
-                    //         },
-                    //         {
-                    //             path:"/user/question/polity",
-                    //             element: <Polity />
-                    //         },
-                    //         {
-                    //             path:"/user/question/geography",
-                    //             element: <Geography />
-                    //         },
-                    //         {
-                    //             path:"/user/question/english",
-                    //             element: <English />
-                    //         },
-                    //         {
-                    //             path:"/user/question/static",
-                    //             element: <Static />
-                    //         },
-                    //         {
-                    //             path:"/user/question/general",
-                    //             element: <General />
-                    //         },
-                    //         {
-                    //             path:"/user/question/science",
-                    //             element: <Science />
-                    //         },
-                    //         {
-                    //             path:"/user/question/economics",
-                    //             element: <Economics />
-                    //         },
-                    //     ]
-                    // },
                     {
                         path: "/user/qsend/:id",
                         element: <GovExam />
                     },
-                    {
-                        path: "/user/neet/:id",
-                        element: <NeetUg />
-                    },
-                    // {
-                    //     path: "/user/maths/:id",
-                    //     element: <Maths />
-                    // },
-                    // {
-                    //     path: "/user/english/:id",
-                    //     element: <English />
-                    // },
                     {
                         path:"/user/qsend",
                         element: <GovExam />
