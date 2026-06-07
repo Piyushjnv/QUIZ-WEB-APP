@@ -1,8 +1,9 @@
 import React from 'react'
-import Logoutuser from '../../Features/User/Logout.user'
 import redirect from '/share.png'
+import History from '../History/History'
+import { useNavigate } from 'react-router-dom'
 function Footer() {
- 
+ const navigate = useNavigate()
   return (
     <div className=' w-full h-35 bottom-0  bg-slate-900 text-slate-300 font-sans border-t border-slate-800'>
       
@@ -14,11 +15,12 @@ function Footer() {
           {/* <div className="mt-5 h-15 items-center bg-slate-800 hover:bg-slate-700/80 transition-all rounded-lg px-1 py-2 border border-slate-700/50">
              <Logoutuser />
            </div> */}
-           <div className='flex items-center gap-1 hover:bg-gray-400 hover:text-gray-900'>
+           <div className='flex mt-5 items-center gap-1 hover:bg-gray-400 text-[15px] hover:text-gray-900'>
             <a target='blank' href="https://piyush-kumar-woad.vercel.app/about"> <span>Meet Developer</span> <img src={redirect} width={14} height={14} className='ml-1 inline' alt="Redirect" /></a>
            </div>
-            <div>
-             &copy; {new Date().getFullYear()} AppName. All rights reserved.
+            <div onClick={()=> navigate('/history')} className='flex mt-5 items-center gap-1 bg-gray-100 font-bold text-[15px] hover:text-gray-900 p-1 rounded  cursor-pointer'>
+             {/* &copy; {new Date().getFullYear()} . All rights reserved. */}
+             History
           </div>
          </div>
 
@@ -27,9 +29,6 @@ function Footer() {
 }
 
 export default Footer
-
-// import React from 'react';
-// import Logoutuser from '../../Features/User/Logout.user';
 
 // function Footer() {
 //   return (

@@ -13,6 +13,7 @@ function GovExam() {
     const [inCorrectq, setInCorrectq] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const handleChangeQuestion = (incomingData, score = 0, time = 0) => {
+        const topics = window.location.pathname.split("/").slice(-1)[0];
         setChangeQuestion(incomingData);
         if (currentIndex < questions.length - 1) {
             setCurrentIndex((prevIndex) => prevIndex + 1);
@@ -22,6 +23,7 @@ function GovExam() {
                 totalquestion: questions.length,
                 correctId: correctq,
                 IncorrectID: inCorrectq,
+                topic: topics
             });
             alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
             navigate("/user");

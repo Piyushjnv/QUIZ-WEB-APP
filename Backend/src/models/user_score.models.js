@@ -22,7 +22,10 @@ const scoreSchema = new mongoose.Schema({
     IncorrectquestionsId : {
         type: Array
     },
-    name : {
+    username : {
+        type: String
+    },
+    topic: {
         type: String
     }
 

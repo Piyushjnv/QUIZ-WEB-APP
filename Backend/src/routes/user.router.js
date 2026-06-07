@@ -1,7 +1,6 @@
 import addQuestions from "../controllers/addquestion.controllers.js";
 import neetqadd from "../controllers/NeetQuestionadd.js"
 import  mathsadd from "../controllers/Maths.controllers.js";
-
 import engqadd from "../controllers/englishQueston.controller.js"
 // import sendQuestions from "../controllers/questionsend.controller.js";
 import {sendQuestions , History, Computer, Polity, Geography, English, economics, general, science,Static , neet, biology, chemistry, physics , Maths  } from "../controllers/questionsend.controller.js";
@@ -21,7 +20,7 @@ router.route("/engqadd").post(engqadd)
 router.route("/mathqadd").post(mathsadd)
 // send question
 
-router.route("/qsend").get(sendQuestions) 
+router.route("/qsend").get(sendQuestions)  
 router.route("/qsend/history").get(History) 
 router.route("/qsend/computer").get(Computer) 
 router.route("/qsend/polity").get(Polity) 
@@ -37,4 +36,5 @@ router.route("/neet/biology").get(biology)
 router.route("/neet/chemistry").get(chemistry)
 router.route("/neet/physics").get(physics)
 router.route("/score").post(userScore)
+
 export default router

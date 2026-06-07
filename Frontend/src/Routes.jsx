@@ -5,6 +5,7 @@ import User from './Features/User'
 import Q_add from './Features/Q_add'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
+import History from './Components/History/History'
 import Profile from './Components/Header/Profile'
 // import QuizGenerator from "./Features/Quizes/ssc_quiz_generator-1"
 import NeetUg from './Components/QuestionByCAtegory/NEETUG'
@@ -24,6 +25,10 @@ const Routes = createBrowserRouter([
             {
                 path:"/about",
                 element: <h1>About</h1>
+            },
+            {
+                path: "/history",
+                element: <History />
             },
             {
                 path: "/login",
