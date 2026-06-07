@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Api from "../../API/Api";
+import Loader from "../../Features/Quizes/Loader";
 // import { useNavigate } from 'react-router-dom'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,7 +17,13 @@ function History() {
             });
         }
     }, []);
-
+if (!history || history.length === 0) {
+        return (
+            <div>
+                <Loader />
+            </div>
+        );
+    }
     return (
         <div className=" mt-10 mb-10">
             {history.map((item) => {
