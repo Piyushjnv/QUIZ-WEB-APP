@@ -50,7 +50,7 @@ useEffect(() => {
             setCurrentIndex((prevIndex) => prevIndex + 1);
         } else {
             alert(`Quiz Finished! \n score : ${score} time Taken : ${time}`);
-            navigate("/history");
+            navigate(-1, {replace: true});
             // You can redirect them or show a score screen here
         }
     };

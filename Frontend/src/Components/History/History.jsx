@@ -60,7 +60,7 @@ function History() {
                                 })
                             }
 
-                            className=" text-sm cursor-pointer border-2 w-20 mb-5 border-[#ff0000c2] text-[#6becf5] bg-[#8892008a] font-bold  rounded-lg text-center p-[2px]">
+                            className=" text-sm cursor-pointer border-2 w-20 mb-5 border-[#ff0000c2] text-[#6becf5] bg-[#8892008a] font-bold  rounded-lg text-center p-0.5">
                                 Test Again
                             </div>
 
@@ -74,7 +74,7 @@ function History() {
                                         },
                                     });
                                 }}
-                                className=" text-sm cursor-pointer border-2 w-20 border-[#d8d400d8] bg-[#ff000080] font-bold  rounded-lg text-center p-[1px]"
+                                className=" text-sm cursor-pointer border-2 w-20 border-[#d8d400d8] bg-[#ff000080] font-bold  rounded-lg text-center p-px"
                             >
                                 Wrong Question{" "}
                             </div>
