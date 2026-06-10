@@ -12,6 +12,7 @@ import general from"/general.png"
 import static1 from "/static.png"
 import maths from "/maths.png"
 import english from "/english.png"
+import current from "/currentAffairs.png"
 // import Time from "../../Features/Quizes/Time";
 import computer from "/computer.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -70,7 +71,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={history} alt="" />
           </div>
-          <div className="text-center mt-1 text-[10px] ">HISTORY</div>
+          <div className="text-center font-bold mt-1 text-[10px] ">HISTORY</div>
         </div>
 
         <div
@@ -88,7 +89,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={geography} alt="" />
           </div>
-          <div className="text-center mt-1 text-[10px] ">GEOGRAPHY</div>
+          <div className="text-center mt-1 font-bold text-[10px] ">GEOGRAPHY</div>
         </div>
         <div
           className="w-fit items-center "
@@ -103,7 +104,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img width={48} height={80} src={polity} alt="" />
           </div>
-          <div className="text-center mt-1 text-[10px] ">POLITY</div>
+          <div className="text-center font-bold mt-1 text-[10px] ">POLITY</div>
         </div>
         <div
           className="w-fit items-center "
@@ -118,7 +119,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={computer} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             COMPUTER
           </div>
         </div>
@@ -174,7 +175,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={static1} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             STATIC
           </div>
         </div>
@@ -191,7 +192,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={general} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             GENERAL
           </div>
         </div>
@@ -208,7 +209,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={economiscs} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             ECONOMICS
           </div>
         </div>
@@ -225,7 +226,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={science} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             SCIENCE
           </div>
         </div>
@@ -244,7 +245,7 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
             <img src={maths} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
             MATHS
           </div>
         </div>
@@ -261,8 +262,25 @@ function Index() {
           <div className=" w-12 h-12 border border-gray-300 bg-[#fffffffb] rounded-full overflow-hidden">
             <img src={english} alt="" />
           </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
+          <div className="text-center mt-1 font-bold  text-[10px] ">
          ENGLISH
+          </div>
+        </div>
+         <div
+          className="w-fit items-center "
+          onClick={() => {
+            if (localStorage.getItem("login") === "true") {
+              navigate("qsend/currentAffairs");
+            } else {
+              navigate("/login");
+            }
+          }}
+        >
+          <div className=" w-12 h-12 border border-gray-300 bg-[#fffffffb] rounded-full overflow-hidden">
+            <img src={current} alt="" />
+          </div>
+          <div className="text-center mt-1  font-bold  text-[10px] ">
+         CURRENT
           </div>
         </div>
       </div>

@@ -93,7 +93,25 @@ function Q_add() {
           }
           // console.log(data);
         });
-      } else {
+      }else if(qtype === "CURRENT"){
+        Api.post("/user/currentAffairs", question).then((response) => {
+          const data = response.data;
+          if (data.success == true) {
+            // alert("question added successfully");
+            setQuestion({
+              Username: userID,
+              Question: "",
+              Option1: "",
+              Option2: "",
+              Option3: "",
+              Option4: "",
+              correctoption: "",
+              category: "",
+            });
+          }
+          // console.log(data);
+        });
+      }  else {
         // console.log("GOVV");
         alert("please select a question type");
       }
@@ -130,13 +148,22 @@ function Q_add() {
           }}
           type="radio" name="sub" className=" m-5" id="MATHS" />{" "}
           <label htmlFor="MATHS"> MATHS </label>
-        </div>
-        {/* section 1 header */}
-         <div className="font-bold text-2xl mb-5">
-          Adding Question for {qtype === "Gov" ? "GK-GS" : qtype === "ENG" ? "English" : qtype === "MATHS" ? "Maths" : "" }
+           <input 
+          checked={qtype === "CURRENT"}
+          onChange={(e)=> {
+            setqtype("CURRENT")
+          }}
+          type="radio" name="sub" className=" m-5" id="Current" />{" "}
+          <label htmlFor="Current"> CURRENT </label>
         </div>
 
-        {/* Question Add In Bulk */}
+        {/* section 1 header */}
+         <div className="font-bold text-2xl mb-5">
+          Adding Question for {qtype === "Gov" ? "GK-GS" : qtype === "ENG" ? "English" : qtype === "MATHS" ? "Maths" : qtype === "CURRENT" ? "CURRENT" : "" }
+        </div>
+
+        {/* ---------Question Add In Bulk----------- */}
+
         {JSON.parse(localStorage.getItem("user")).role === "ADMIN" ? (
           <Questionaddinbulk qtype={qtype} />
         ) : (
@@ -286,7 +313,9 @@ function Q_add() {
           <option value="Comprehension">Comprehension</option>
           <option value="Grammar">Grammar</option>
           <option value="Sentence Structure">Sentence Structure</option>
-        </select>: qtype === "MATHS" ? 
+        </select>: 
+        // maths
+        qtype === "MATHS" ? 
         <select
           className=" border-2 rounded-xl bg-gray-800 text-white"
           // value={(e) => (e.target.value)}
@@ -314,8 +343,36 @@ function Q_add() {
           <option value="Average">Average</option>
           <option value="Interest">Interest</option>
           <option value="Partnership">Partnership</option>
-        </select> : null}
+        </select> :
+        // current 
+        qtype === "CURRENT" ?
+         <select
+          className=" border-2 rounded-xl bg-gray-800 text-white"
+          // value={(e) => (e.target.value)}
+          value={question.category}
+          name="category"
+          onChange={handleChange}
+          id="Category"
+        >
+          <option value="NA">N/A ?</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          {/* <option value="APR">APRIL</option>
+          <option value="MAY">MAY</option>
+          <option value="JUN">JUNE</option>
+          <option value="JUL">JULY</option>
+          <option value="AUG">AUGUST</option>
+          <option value="SEP">SEPTEMBER</option>
+          <option value="OCT">OCTOBER</option>
+          <option value="NOV">NOVEMBER</option>
+          <option value="DEC">DECEMBER</option> */}
+        </select>: null}
       </div>
+
+      {/*     *********Submit Button ******* */}
+
+
       <div className=" flex w-full justify-center">
         {" "}
         <button

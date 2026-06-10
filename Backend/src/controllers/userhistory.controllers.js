@@ -2,6 +2,7 @@ import mathsModel from "../models/maths.model.js";
 import addQuestion from "../models/question.models.js";
 import englishQuestion from "../models/englishQuetion.models.js";
 import userScore from "../models/user_score.models.js";
+import currentAffairs from "../models/Current_affairs.models.js"
 import User from "../models/User.model.js";
 
 const history  = async (req, res) => { 

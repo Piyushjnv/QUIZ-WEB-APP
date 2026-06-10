@@ -1,6 +1,7 @@
 import questionModels from "../models/question.models.js"
 import Maths from "../models/maths.model.js"
 import english from "../models/englishQuetion.models.js"
+import currentAffairs from "../models/Current_affairs.models.js"
 import user_scoreModels from "../models/user_score.models.js";
 
 
@@ -27,7 +28,15 @@ async function getHistory(req, res) {
                     const questionIds = text.IncorrectquestionsId;
                     const englishquestions = await english.find({ _id: { $in: questionIds } });
                     return res.status(200).json({ data:  englishquestions  });
-                }else{
+                }
+                else if(topic === "CURRENTAFFAIRS"){
+                    // console.log("i am english");
+                    
+                    const questionIds = text.IncorrectquestionsId;
+                    const englishquestions = await currentAffairs.find({ _id: { $in: questionIds } });
+                    return res.status(200).json({ data:  englishquestions  });
+                }
+                else{
                         const questionIds = text.IncorrectquestionsId;
                         const questions = await questionModels.find({ _id: { $in: questionIds } });
                         // console.log(questions);
@@ -44,7 +53,12 @@ async function getHistory(req, res) {
                     const questionIds = text.IncorrectquestionsId.concat(text.correctQuestionsId);
                     const englishquestions = await english.find({ _id: { $in: questionIds } });
                     return res.status(200).json({ data:  englishquestions  });
-                }else{
+                }else if(topic === "CURRENTAFFAIRS"){
+                    const questionIds = text.IncorrectquestionsId.concat(text.correctQuestionsId);
+                    const englishquestions = await currentAffairs.find({ _id: { $in: questionIds } });
+                    return res.status(200).json({ data:  englishquestions  });
+                }
+                else{
                         const questionIds = text.IncorrectquestionsId.concat(text.correctQuestionsId)
                         const questions = await questionModels.find({ _id: { $in: questionIds } });
                         return res.status(200).json({ data:  questions  });

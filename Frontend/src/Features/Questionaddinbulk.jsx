@@ -20,7 +20,7 @@ function Questionaddinbulk({qtype}) {
             setmessage("Question added successfully!");
             
           }
-          console.log(data, "data after question1 add");
+          // console.log(data, "data after question1 add");
         })
         .catch((error) => {
           // console.log("error in question add ", error);
@@ -35,7 +35,7 @@ function Questionaddinbulk({qtype}) {
             // alert("question1 added successfully")/
             setmessage("Question added successfully!");
           }
-          console.log(data, "data after question1 add");
+          // console.log(data, "data after question1 add");
         })
         .catch((error) => {
           setmessage(error.response.data.message || "Error adding question.");
@@ -49,7 +49,21 @@ function Questionaddinbulk({qtype}) {
             // alert("question1 added successfully")/
             setmessage("Question added successfully!");
           }
-          console.log(data, "data after question1 add");
+          // console.log(data, "data after question1 add");
+        })
+        .catch((error) => {
+          setmessage(error.response.data.message || "Error adding question.");
+        })
+      }else if(qtype == "CURRENT"){
+        // current affairs
+        Api.post("/user/currentAffairs", question).then((response) => {
+          // console.log("question at submit function ",question);
+          const data = response.data;
+          if (data.success == true) {
+            // alert("question1 added successfully")/
+            setmessage("Question added successfully!");
+          }
+          // console.log(data, "data after question1 add");
         })
         .catch((error) => {
           setmessage(error.response.data.message || "Error adding question.");
