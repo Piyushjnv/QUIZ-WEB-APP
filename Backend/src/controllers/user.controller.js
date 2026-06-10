@@ -74,7 +74,7 @@ export const loginUser = async (req, res) => {
     const { username, password } = req.body;
     const email = username
     // Find user by username
-    // console.log('empty feilds', username, password);
+    console.log('empty feilds', username, password);
       if([ username,  password].some((data)=> data?.trim() === "")){
       
         return res.status(408).json({
@@ -82,15 +82,15 @@ export const loginUser = async (req, res) => {
         message: "* All feilds are mendatory ",
       });
     }
-    const user = await User.findOne({ $or: [{ username }, { email }] });
+    const user = await User.findOne({ $or: [{ username: username.toLowerCase() }, { email: email.toLowerCase() }] });
     if (!user) {
       return res.status(408).json({
         success: false,
         message: "Invalid credentials",
       });
     }
-// console.log('User found:', user);
-
+console.log('User found:', user);
+    const times = Date.now()
     // Check password
     const isPasswordValid = await user.comparePassword(password);
 
@@ -100,21 +100,22 @@ export const loginUser = async (req, res) => {
         message: "Invalid credentials",
       });
     }
+console.log('time taken ', Date.now() - times);
 
    
-    const accestoken = await user.generateAccessToken();
-    const refreshtoken =  await user.generateRefreshToken();
+    // const accestoken = await user.generateAccessToken();
+    // const refreshtoken =  await user.generateRefreshToken();
     // console.log(refreshtoken, accestoken);
     
-    res.cookie("access_token", `Bearer ${accestoken}`, {
-          expires: new Date(Date.now() + 8 * 3600000),
-          httpOnly: true, // cookie will be removed after 8 hours
-        })
-        res.cookie("refresh_token", `Bearer ${refreshtoken}`, 
-          {
-          expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
-          httpOnly: true,
-        })
+    // res.cookie("access_token", `Bearer ${accestoken}`, {
+    //       expires: new Date(Date.now() + 8 * 3600000),
+    //       httpOnly: true, // cookie will be removed after 8 hours
+    //     })
+    //     res.cookie("refresh_token", `Bearer ${refreshtoken}`, 
+    //       {
+    //       expires: new Date(Date.now() + 240 * 3600000), // cookie will be removed after 8 hours
+    //       httpOnly: true,
+    //     })
     return res
     .status(200)
     .json({

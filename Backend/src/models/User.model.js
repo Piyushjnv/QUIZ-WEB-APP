@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import user_scoreModels from "./user_score.models.js";
 
@@ -46,16 +46,19 @@ const UserSchema = mongoose.Schema(
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, 16);
+  this.password = await bcrypt.hash(this.password, 10);
   // next();
 });
 UserSchema.methods.ChangePassword = async function(password, newpassword){
 
 }
 UserSchema.methods.comparePassword = async function (password) {
+  // console.log('compare password');
+  
   return await bcrypt.compare(password, this.password);
 };
 UserSchema.methods.generateAccessToken = function () {
+//  console.log('gen acces token');
  
   return jwt.sign(
     {
@@ -69,6 +72,7 @@ UserSchema.methods.generateAccessToken = function () {
 };
 
 UserSchema.methods.generateRefreshToken = function () {
+  // console.log('gen refresh token');
     const refreshtoken = jwt.sign(
     {
       id: this._id,
