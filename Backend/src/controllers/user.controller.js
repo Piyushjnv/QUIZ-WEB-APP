@@ -114,16 +114,19 @@ export const loginUser = async (req, res) => {
       httpOnly: true,
       secure: true,
     };
+    const isProduction = process.env.NODE_ENV === "production";
     res
       .cookie("access_token", `Bearer ${accestoken}`, {
         expires: new Date(Date.now() + 8 * 3600000),
         httpOnly: true,
-        secure: true,
+        secure: isProduction, // false on localhost, true in production
+    sameSite: isProduction ? "none" : "lax"
       })
       .cookie("refresh_token", `Bearer ${refreshtoken}`, {
         expires: new Date(Date.now() + 240 * 3600000),
         httpOnly: true,
-        secure: true,
+        secure: isProduction,
+        sameSite: isProduction ? "none" : "lax"
       });
     //   expires: new Date(Date.now() + 8 * 3600000),
    
