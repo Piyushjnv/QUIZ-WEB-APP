@@ -3,6 +3,7 @@ import { createBrowserRouter, Outlet } from 'react-router-dom'
 import Layout from './Layout'
 import User from './Features/User'
 import Q_add from './Features/Q_add'
+import ChangePasword from './Features/User/ChangePasword'
 import Index from './Components/Hero/Index'
 import Q_attempt from './Features/Q_attempt'
 import History from './Components/History/History'
@@ -70,7 +71,18 @@ const Routes = createBrowserRouter([
                     },
                     {
                         path:"/user/profile",
-                        element: <Profile />
+                      
+                        children: [
+                            {
+                                index:true,
+                                element: <Profile />
+
+                            },
+                            {
+                                path: "/user/profile/changepassword",
+                                element: <ChangePasword />
+                            }
+                        ]
                     },
                     {
                         path:"/user/qattempt",

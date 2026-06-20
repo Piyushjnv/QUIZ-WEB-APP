@@ -24,7 +24,7 @@ export function LoginForm() {
         try {
             // setisdesable(true)
             Api
-                .post(`user/login`, formData)
+                .post(`user/login`, formData, { withCredentials: true })
                 .then(  (response) => {
                     // const {user} = await response.data
                     if(response.data.success) {
@@ -36,7 +36,7 @@ export function LoginForm() {
                     // console.log(response.data, user.username, user.email)
                 })
                 .catch ((err)=>{
-                        console.log("err responce",err.response)
+                        // console.log("err responce",err.response)
                         setmessage(err.response.data.message)
                     }
                 )

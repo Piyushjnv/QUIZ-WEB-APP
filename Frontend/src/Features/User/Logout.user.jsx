@@ -1,7 +1,9 @@
 import React from "react";
+import API from "../../API/Api"
 import { useNavigate } from "react-router-dom";
 
 function Logoutuser() {
+
   const navigate = useNavigate();
   const user = {
     _id: "null",
@@ -13,6 +15,12 @@ function Logoutuser() {
   const logout = () => {
     localStorage.setItem("login", false);
     localStorage.setItem("user", {});
+    API.post("user/logout").then((res)=>{
+        if(res.data.success){
+          console.log("log out ");
+          
+        }
+    })
     alert("log out ");
     // console.log('log out');
     navigate("/");
