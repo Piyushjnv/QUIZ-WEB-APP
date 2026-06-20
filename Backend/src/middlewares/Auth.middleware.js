@@ -1,40 +1,48 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
-export const Auth = async (req,res,next) => {
-        
+
+export const Auth = async (req, res, next) => {
     try {
-        const access_token =  req.cookies?.access_token || req.header("Authorization")?.replace("Bearer ", "")
-        console.log('aaccess_token', access_token);
-        console.log('aaccess_token', req.cookies);
-        if(!access_token){
-        //         return res.status(404).json({
-        //             success : false,
-        //             message : "Invalid Access Token"
-        //         })
-        console.log(" not avalible ");
-        
+        // 1. Grab raw token source
+        let tokenSource = req.cookies?.access_token || req.header("Authorization");
+            console.log(tokenSource);
+            console.log("Raw Header:", req.header("Authorization"));
+console.log("Raw Cookies:", req.cookies);
+            
+        if (!tokenSource) {
+            return res.status(401).json({
+                success: false,
+                message: "Access Token not available or unauthorized"
+            });
         }
-        // const refresh_token =  req.cookies?.refresh_token
-        const decodedinfo =  jwt.verify(access_token,process.env.Secret_KEY)  
-        console.log(decodedinfo);
+
+        // 2. Clean the token prefix out safely
+        const access_token = tokenSource.startsWith("Bearer ") 
+            ? tokenSource.replace("Bearer ", "") 
+            : tokenSource;
+
+        // 3. Verify JWT string
+        const decodedinfo = jwt.verify(access_token, process.env.Secret_KEY);  
           
-        const user = await User.findById(decodedinfo?.id).select("-password -refreshToken")
-        // if(!user){
-        //         return res.status(404).json({
-        //             success : false,
-        //             message : "Invalid Access Token"
-        //         })
-        // }
-        if(user){
-            req.user = user
+        // 4. Query the DB (Double check if you used .id or ._id when signing the JWT)
+        const user = await User.findById(decodedinfo?._id || decodedinfo?.id).select("-password -refreshToken");
+        
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found associated with this token"
+            });
         }
-        next()
+
+        // 5. Attach user object to the request context
+        req.user = user;
+        next();
 
     } catch (error) {
-        return res.status(500).json({
+        return res.status(401).json({
             success: false,
-            message: error?.message || "server error",
-            error : error
-        })
+            message: error?.message || "Authentication failed",
+            error: error
+        });
     }
-}
+};
