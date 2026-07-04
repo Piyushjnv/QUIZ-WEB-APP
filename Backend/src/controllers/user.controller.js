@@ -200,7 +200,7 @@ try {
   const {oldpassword,  Newpassword, Id} = req.body
   // console.log(oldpassword, Id , Newpassword);
   const user = await User.findById(Id)
-  console.log(user);
+  // console.log(user);
   const validatepass = await user.comparePassword(oldpassword)
   console.log(validatepass);
   if(!validatepass){

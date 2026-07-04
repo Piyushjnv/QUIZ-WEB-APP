@@ -2,6 +2,7 @@ import React from 'react'
 import { createBrowserRouter, Outlet } from 'react-router-dom'
 import Layout from './Layout'
 import User from './Features/User'
+import Verifyuser from './Components/ForgetPassword/Verifyuser'
 import Q_add from './Features/Q_add'
 import ChangePasword from './Features/User/ChangePasword'
 import Index from './Components/Hero/Index'
@@ -40,6 +41,11 @@ const Routes = createBrowserRouter([
                     element: <TestAgain />
                     }
                 ]
+            },
+            {
+                path: "/forgetpassword",
+                element: <Verifyuser />
+
             },
             {
                 path: "/login",
