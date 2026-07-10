@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of private routes
+Disallow: /admin/
+Disallow: /dashboard/
+
+# Point to your sitemap URL
+Sitemap: https://quiz-web-app-mu.vercel.app/sitemap.xml

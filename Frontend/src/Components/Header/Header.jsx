@@ -49,9 +49,9 @@ user}`:" And Welcome"}
                       <div className='w-10 h-10 border-2 rounded-full bg-white overflow-hidden'><img src={profile} width={42} height={42} alt="profile" /></div>
                 </Link>}
             
-                <div className=' absolute right-0 bottom-10 '>
+                {/* <div className=' absolute right-0 bottom-10 '>
         <Darkmode />
-                </div>
+                </div> */}
       </div>
    
     </div>

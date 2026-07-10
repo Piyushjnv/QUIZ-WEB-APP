@@ -59,7 +59,7 @@ function Index() {
      {/* second row */}
       <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
         <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/history");
@@ -75,7 +75,7 @@ function Index() {
         </div>
 
         <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             // console.log('geography');
             
@@ -92,7 +92,7 @@ function Index() {
           <div className="text-center mt-1 font-bold text-[10px] ">GEOGRAPHY</div>
         </div>
         <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/polity");
@@ -107,7 +107,7 @@ function Index() {
           <div className="text-center font-bold mt-1 text-[10px] ">POLITY</div>
         </div>
         <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/computer");
@@ -163,7 +163,7 @@ function Index() {
 
       <div className=" flex flex-row mt-10 justify-between mx-auto gap-12">
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/static");
@@ -180,7 +180,7 @@ function Index() {
           </div>
         </div>
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/general");
@@ -197,7 +197,7 @@ function Index() {
           </div>
         </div>
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/economics");
@@ -214,7 +214,7 @@ function Index() {
           </div>
         </div>
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/science");
@@ -233,7 +233,7 @@ function Index() {
       </div>
       <div className=" flex flex-row mt-10 justify-between mx-auto mb-20 gap-12">
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/maths");
@@ -250,7 +250,7 @@ function Index() {
           </div>
         </div>
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer"
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/english");
@@ -267,7 +267,7 @@ function Index() {
           </div>
         </div>
          <div
-          className="w-fit items-center "
+          className="w-fit items-center cursor-pointer "
           onClick={() => {
             if (localStorage.getItem("login") === "true") {
               navigate("qsend/currentAffairs");
@@ -284,79 +284,7 @@ function Index() {
           </div>
         </div>
       </div>
-      {/* neet  */}
-        
-        {/* <div className=" flex flex-row mt-10 mb-10 border-[1.4px] rounded-2xl p-5 justify-between mx-auto gap-12">
-         <div
-          className="w-fit items-center "
-          onClick={() => {
-            if (localStorage.getItem("login") === "true") {
-              navigate("neet/biology");
-            } else {
-              navigate("/login");
-            }
-          }}
-        >
-          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
-          </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
-            BIOLOGY
-          </div>
-        </div>
-         <div
-          className="w-fit items-center "
-          onClick={() => {
-            if (localStorage.getItem("login") === "true") {
-              navigate("neet/physics");
-            } else {
-              navigate("/login");
-            }
-          }}
-        >
-          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
-          </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
-            PHYSICS
-          </div>
-        </div>
-         <div
-          className="w-fit items-center "
-          onClick={() => {
-            if (localStorage.getItem("login") === "true") {
-              navigate("neet/chemistry");
-            } else {
-              navigate("/login");
-            }
-          }}
-        >
-          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
-          </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
-            CHEMISTRY
-          </div>
-        </div>
-         <div
-          className="w-fit items-center "
-          onClick={() => {
-            if (localStorage.getItem("login") === "true") {
-              navigate("neet/allneet");
-            } else {
-              navigate("/login");
-            }
-          }}
-        >
-          <div className=" w-12 h-12 border border-gray-300 bg-[#ffffff59] rounded-full overflow-hidden">
-            <img src="" alt="" />
-          </div>
-          <div className="text-center mt-1 font-[1px]  text-[10px] ">
-            NEET
-          </div>
-        </div>
-      </div> */}
-    </div>
+         </div>
   );
 }
 
