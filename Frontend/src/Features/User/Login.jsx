@@ -81,11 +81,11 @@ export function LoginForm() {
                     Submit
                 </button>
                 <p className=" text-red-600 ">{message}</p>
-                <p 
+                {/* <p 
                 onClick={()=>{
                     navigate("/forgetpassword")
                 }}
-                className="text-slate-400">Forget password*</p>
+                className="text-slate-400">Forget password*</p> */}
             </form>
         </div>
     );
